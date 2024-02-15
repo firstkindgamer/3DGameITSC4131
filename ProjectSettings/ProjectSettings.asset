@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: e0127345239b442a6900163e6198afd7
+  productGUID: d8f5027b7100b4fa9bbee30f17a4bc3f
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -752,10 +752,10 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 09e33a7b-9e01-4e40-9a76-468480dca778
+  cloudProjectId: 1fe87ee4-f7dc-4b81-b2b4-bc3b1fbd19f5
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 3DGameITSC4131
+  projectName: 3DGameITSC4131 2024-02-15_12-56-16
   organizationId: maximilio_unity
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
