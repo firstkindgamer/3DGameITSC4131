@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
     public bool ableToMakeADoubleJump = true;
 
+    public Transform meshTransform;
+
     private Transform GetCameraRotation()
     {
         cameraRotatorDummy.eulerAngles = cameraRotator.eulerAngles;
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour
         }
         controller.Move(direction * Time.deltaTime);
 
-        float runMultiplier = (Input.GetKey("left shift")) ? 2f : 1f;
+        float runMultiplier = (Input.GetKey("right shift")) ? 2f : 1f;
 
         Vector3 walkDirection = new Vector3();
         //walkDirection.x = hInput * speed;
@@ -71,6 +73,25 @@ public class PlayerController : MonoBehaviour
         walkDirection += currentCameraRot.forward * vInput * speed * runMultiplier;
         controller.Move(walkDirection * Time.deltaTime);
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, 0.09f, groundLayer);
+        if (walkDirection.magnitude != 0)
+            nonzeroWalkRotation = meshTransform.localRotation;
+
+        transform.localEulerAngles = new Vector3(0, 0, 0);
+        meshTransform.localRotation = Quaternion.LookRotation(walkDirection);
+
+        if (walkDirection.magnitude == 0)
+            meshTransform.localRotation = nonzeroWalkRotation;
+
+        //isGrounded = Physics.CheckSphere(groundCheck.position, 0.09f, groundLayer);
+        //isGrounded = Physics.CheckSphere(groundCheck.position, 0.5f, groundLayer);
+
+        isGrounded = Physics.CheckCapsule(new Vector3(groundCheck.position.x, groundCheck.position.y, groundCheck.position.z),
+            new Vector3(groundCheck.position.x, groundCheck.position.y - 0.09f, groundCheck.position.z), 0.5f, groundLayer);
     }
+
+    //private void OnDrawGizmosSelected()
+    //{
+    //    Gizmos.color = isGrounded ? Color.green : Color.red;
+    //    Gizmos.DrawWireSphere(groundCheck.position, 0.09f);
+    //}
 }
