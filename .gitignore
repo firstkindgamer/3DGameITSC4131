@@ -49,3 +49,9 @@ AssemblyInfo.cs
 
 # Anything else
 Thumbs.db
+.vscode/extensions.json
+.vscode/launch.json
+.vscode/settings.json
+UserSettings/EditorUserSettings.asset
+UserSettings/EditorUserSettings.asset
+UserSettings/Layouts/default-2022.dwlt
