@@ -10,6 +10,8 @@ public class TowerPlacer : MonoBehaviour
     MeshRenderer meshRenderer;
     public GameObject towerToPlace;
 
+    PlayerController player;
+
     public Vector3 findHighestSurface(float x, float z)
     {
         RaycastHit hit;
@@ -23,6 +25,8 @@ public class TowerPlacer : MonoBehaviour
         cameraMovement = GameObject.FindObjectOfType<CameraMovement>();
 
         meshRenderer = GetComponent<MeshRenderer>();
+
+        player = GameObject.FindObjectOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -42,6 +46,7 @@ public class TowerPlacer : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 GameObject newTower = Instantiate(towerToPlace, findHighestSurface(transform.position.x, transform.position.z), Quaternion.identity);
+                player.Build();
                 //newTower.transform.position = findHighestSurface(transform.position.x, transform.position.z);
             }
         } else
