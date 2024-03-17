@@ -33,7 +33,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GlobalScript.health = 100;
+        GlobalScript.maxHealth = 100;
     }
 
     // Update is called once per frame
