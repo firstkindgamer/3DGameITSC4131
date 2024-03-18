@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-
+    [Header("Attributes")]
     public Transform target;
     public float range = 15f;
+    public float fireRate = 1f; //fire once a second by default
+    private float fireCountdown = 0f; //is divided by firerate
+
+    [Header("Unity Setup Fields")]
     public string enemyTag = "Enemy";
     public Transform partToRotate; 
+
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +57,25 @@ public class Tower : MonoBehaviour
         // Quaternion lookRotation = Quaternion.LookRotation(dir);
         // Vector3 rotation = lookRotation.eulerAngles;
         // partToRotate.rotation = Quaternion.Euler (0f, rotation.y, 0f);
+
+        if (fireCountdown <= 0f)
+        {
+            Shoot();
+            fireCountdown = 1f / fireRate;
+        }
+
+        fireCountdown -= Time.deltaTime; 
+    }
+
+    void Shoot()
+    {
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+        if(bullet != null)
+        {
+            bullet.Seek(target);
+        }
     }
 
     void OnDrawGizmosSelected() //Draws range if tower is selected in unity
