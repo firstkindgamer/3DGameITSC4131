@@ -25,11 +25,11 @@ Transform:
   m_GameObject: {fileID: 6159025377821148550}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.8200002, y: 2.1599998, z: -0.9313021}
+  m_LocalPosition: {x: -3.8200002, y: 1.8599999, z: -0.9313021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9217344409824418660}
+  m_Father: {fileID: 2512867623722640457}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8673981925586189455
 PrefabInstance:
@@ -81,19 +81,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a7e55a792a8b02b4a9ccdf0c6d4f9fcd, type: 3}
       propertyPath: m_Name
-      value: Clockwork_Cannon_Tower
+      value: Clockwork Tower
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: a7e55a792a8b02b4a9ccdf0c6d4f9fcd, type: 3}
-      insertIndex: 0
+    - targetCorrespondingSourceObject: {fileID: -2684335245646866234, guid: a7e55a792a8b02b4a9ccdf0c6d4f9fcd, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1999112767137764120}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a7e55a792a8b02b4a9ccdf0c6d4f9fcd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4982154819766947274}
   m_SourcePrefab: {fileID: 100100000, guid: a7e55a792a8b02b4a9ccdf0c6d4f9fcd, type: 3}
+--- !u!4 &2512867623722640457 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2684335245646866234, guid: a7e55a792a8b02b4a9ccdf0c6d4f9fcd, type: 3}
+  m_PrefabInstance: {fileID: 8673981925586189455}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8404074568657142238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a7e55a792a8b02b4a9ccdf0c6d4f9fcd, type: 3}
