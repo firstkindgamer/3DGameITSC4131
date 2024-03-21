@@ -15,7 +15,7 @@ public class TowerPlacer : MonoBehaviour
     public Vector3 findHighestSurface(float x, float z)
     {
         RaycastHit hit;
-        Physics.CapsuleCast(new Vector3(x, 50, z), new Vector3(x, 51, z), .5f, Vector3.down, out hit, Mathf.Infinity, groundLayer);
+        Physics.CapsuleCast(new Vector3(x, 50, z), new Vector3(x, 51, z), 1.443531f, Vector3.down, out hit, Mathf.Infinity, groundLayer);
         return new Vector3(x, hit.point.y, z);
     }
 
