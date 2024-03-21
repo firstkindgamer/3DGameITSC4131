@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerTesting : MonoBehaviour
 {
     public CharacterController controller;
     public Vector3 direction;
@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour
 
     public Transform meshTransform;
 
-    public Animator animator;
-
     private Transform GetCameraRotation()
     {
         cameraRotatorDummy.eulerAngles = cameraRotator.eulerAngles;
@@ -40,7 +38,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         float hInput = Input.GetAxis("Horizontal");
         float vInput = Input.GetAxis("Vertical");
 
@@ -54,7 +51,6 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 direction.y = jumpForce;
-                animator.SetTrigger("Jump");
             }
         }
         else
@@ -63,13 +59,10 @@ public class PlayerController : MonoBehaviour
             if (ableToMakeADoubleJump && Input.GetButtonDown("Jump"))
             {
                 direction.y = jumpForce;
-                animator.SetTrigger("Jump");
                 ableToMakeADoubleJump = false;
             }
         }
         controller.Move(direction * Time.deltaTime);
-
-        animator.SetFloat("VSpeed", direction.y);
 
         float runMultiplier = (Input.GetKey("right shift")) ? 2f : 1f;
 
@@ -84,8 +77,6 @@ public class PlayerController : MonoBehaviour
         if (walkDirection.magnitude != 0)
             nonzeroWalkRotation = meshTransform.localRotation;
 
-        animator.SetFloat("Speed", walkDirection.magnitude);
-
         transform.localEulerAngles = new Vector3(0, 0, 0);
         meshTransform.localRotation = Quaternion.LookRotation(walkDirection);
 
@@ -97,13 +88,6 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = Physics.CheckCapsule(new Vector3(groundCheck.position.x, groundCheck.position.y, groundCheck.position.z),
             new Vector3(groundCheck.position.x, groundCheck.position.y - 0.09f, groundCheck.position.z), 0.5f, groundLayer);
-
-        animator.SetBool("Grounded", isGrounded);
-    }
-
-    public void Build()
-    {
-        animator.SetTrigger("Build");
     }
 
     //private void OnDrawGizmosSelected()

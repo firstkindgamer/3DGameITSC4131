@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-
+    [Header("Attributes")]
     public Transform target;
     public float range = 15f;
     public Transform partToRotate;
@@ -12,6 +12,11 @@ public class Tower : MonoBehaviour
     public Quaternion rotateDir = Quaternion.identity;
 
     public GameObject bulletPrefab;
+
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+
+    
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +42,7 @@ public class Tower : MonoBehaviour
 
         if (nearestEnemy != null && shortestDistance <= range)
         {
-            target = nearestEnemy.transform;
+            target = nearestEnemy.transform; //switch target to nearest enemy
         } else
         target = null;
 
