@@ -8,6 +8,8 @@ public class UIScript : MonoBehaviour
     public Image healthBar;
     private RectTransform healthPos;
     private Vector3 originalHealth;
+    public Image swordPixel;
+    public Image brickPixel;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,5 +23,15 @@ public class UIScript : MonoBehaviour
     {
         print(GlobalScript.health);
         healthBar.transform.localScale = new Vector3( (GlobalScript.health / 100), 1, 1);
+    }
+    
+    void rangedMode()
+    {
+
+    }
+
+    void swordmode() { 
+    
+    
     }
 }
