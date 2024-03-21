@@ -13,7 +13,6 @@ public class Tower : MonoBehaviour
 
     public GameObject bulletPrefab;
 
-    public GameObject bulletPrefab;
     public Transform firePoint;
 
     
