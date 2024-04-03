@@ -56,6 +56,13 @@ public class PlayerController : MonoBehaviour
                 direction.y = jumpForce;
                 animator.SetTrigger("Jump");
             }
+
+            if (Input.GetKey("1"))
+            {
+                animator.SetTrigger("Swing");
+                
+
+            }
         }
         else
         {
