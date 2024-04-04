@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey("1"))
             {
                 animator.SetTrigger("Swing");
-                
+                print("Swung");
 
             }
         }
