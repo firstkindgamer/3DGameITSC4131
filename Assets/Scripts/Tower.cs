@@ -7,12 +7,14 @@ public class Tower : MonoBehaviour
     [Header("Attributes")]
     public Transform target;
     public float range = 15f;
-    public Transform partToRotate;
+    public float fireRate = 1f; //fire once a second by default
+    private float fireCountdown = 0f; //is divided by firerate
 
-    public Quaternion rotateDir = Quaternion.identity;
+    [Header("Unity Setup Fields")]
+    public string enemyTag = "Enemy";
+    public Transform partToRotate; 
 
     public GameObject bulletPrefab;
-
     public Transform firePoint;
 
     
@@ -20,15 +22,16 @@ public class Tower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("Fire", 0f, 1.5f); //Update target every half second
+        InvokeRepeating("UpdateTarget", 0f, 0.5f); //Update target every half second
     }
 
-    void Update()
+    void UpdateTarget()
     {
-        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
-        Enemy nearestEnemy = null;
-        foreach (Enemy enemy in enemies)
+        GameObject nearestEnemy = null;
+        foreach (GameObject enemy in enemies) //find the nearest enemy
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             if (distanceToEnemy < shortestDistance)
@@ -41,38 +44,50 @@ public class Tower : MonoBehaviour
 
         if (nearestEnemy != null && shortestDistance <= range)
         {
+            print("Switching target!");
             target = nearestEnemy.transform; //switch target to nearest enemy
-        } else
-        target = null;
-
-        var lookDir = nearestEnemy.transform.position - transform.position;
-        lookDir.y = 0; // keep only the horizontal direction
-        rotateDir = Quaternion.LookRotation(lookDir);
-
-        partToRotate.rotation = Quaternion.RotateTowards(partToRotate.rotation, rotateDir, 10f);
+        } else {
+            target = null;
+            print("There are no enemies to target!");
+        }
+        
     }
 
-    void Fire()
+    // Update is called once per frame
+    void Update()
     {
-        if (target != null)
-        {
-            Bullet newBullet = Instantiate(bulletPrefab).GetComponent<Bullet>();
-            newBullet.transform.position = transform.position + new Vector3(0,1,0);
-            newBullet.goalDir = target.transform.position;
+        if (target == null) //if no target do nothing
+            return;
+        
+        //Rotates partToRotate to face target
+        //BUG: Some part of this teleports new objects into the base of the tower. 
+        //Tagged until we have a better way to debug
+        /*
+         Vector3 dir = target.position = transform.position;
+         Quaternion lookRotation = Quaternion.LookRotation(dir);
+         Vector3 rotation = lookRotation.eulerAngles;
+         partToRotate.rotation = Quaternion.Euler (0f, rotation.y-180, 0f); //-180 is an offset for clockwork tower
+         */
 
+        if (fireCountdown <= 0f)
+        {
+            Shoot();
+            fireCountdown = 1f / fireRate;
+        }
+
+        fireCountdown -= Time.deltaTime; 
+    }
+
+    void Shoot()
+    {
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = bulletGO.GetComponent<Bullet>();
+
+        if(bullet != null)
+        {
+            bullet.Seek(target);
         }
     }
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    if (target == null) //if no target do nothing
-    //        return;
-    //    // Vector3 dir = target.position = transform.position;
-    //    // Quaternion lookRotation = Quaternion.LookRotation(dir);
-    //    // Vector3 rotation = lookRotation.eulerAngles;
-    //    // partToRotate.rotation = Quaternion.Euler (0f, rotation.y, 0f);
-    //}
 
     void OnDrawGizmosSelected() //Draws range if tower is selected in unity
     {
