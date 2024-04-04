@@ -62,12 +62,11 @@ public class Tower : MonoBehaviour
         //Rotates partToRotate to face target
         //BUG: Some part of this teleports new objects into the base of the tower. 
         //Tagged until we have a better way to debug
-        /*
-         Vector3 dir = target.position = transform.position;
+
+         Vector3 dir = target.position - transform.position;
          Quaternion lookRotation = Quaternion.LookRotation(dir);
          Vector3 rotation = lookRotation.eulerAngles;
-         partToRotate.rotation = Quaternion.Euler (0f, rotation.y-180, 0f); //-180 is an offset for clockwork tower
-         */
+         partToRotate.rotation = Quaternion.Euler (0f, rotation.y + 90f, 0f); //-180 is an offset for clockwork tower
 
         if (fireCountdown <= 0f)
         {

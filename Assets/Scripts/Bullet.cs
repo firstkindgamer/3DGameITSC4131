@@ -29,20 +29,34 @@ public class Bullet : MonoBehaviour
         Vector3 dir = target.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
 
-        if (dir.magnitude <= distanceThisFrame)
-        {
-            HitTarget();
-            return;
-        }
+        //if (dir.magnitude <= distanceThisFrame)
+        //{
+        //    HitTarget();
+        //    return;
+        //}
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 
     }
 
-    void HitTarget()
+    private void OnTriggerEnter(Collider other)
     {
-        GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectIns, 2f); //destroy instance after two seconds
-        Destroy(target.gameObject); //TEMPORARY REPLACEMENT FOR DAMAGE
-        Destroy(gameObject);
+        if (other.tag == "Enemy")
+        {
+            GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(effectIns, 2f); //destroy instance after two seconds
+
+            Destroy(this.gameObject);
+            other.GetComponent<Enemy>().health -= 1f;
+            if (other.GetComponent<Enemy>().health <= 0)
+                Destroy(other.gameObject);
+        }
     }
+
+    //void HitTarget()
+    //{
+    //    GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+    //    Destroy(effectIns, 2f); //destroy instance after two seconds
+    //    Destroy(target.gameObject); //TEMPORARY REPLACEMENT FOR DAMAGE
+    //    Destroy(gameObject);
+    //}
 }

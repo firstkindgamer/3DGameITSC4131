@@ -40,17 +40,17 @@ public class Enemy : MonoBehaviour
         Destroy(transform.Find("Cube").gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        print("triggered!");
-        if (other.tag == "Bullet")
-        {
-            Destroy(other.gameObject);
-            health -= 1f;
-            if (health <= 0)
-                Destroy(this.gameObject);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    print("triggered!");
+    //    if (other.tag == "Bullet")
+    //    {
+    //        Destroy(other.gameObject);
+    //        health -= 1f;
+    //        if (health <= 0)
+    //            Destroy(this.gameObject);
+    //    }
+    //}
 
     private void setupParms()
     {
