@@ -44,11 +44,11 @@ public class Tower : MonoBehaviour
 
         if (nearestEnemy != null && shortestDistance <= range)
         {
-            print("Switching target!");
+            //print("Switching target!");
             target = nearestEnemy.transform; //switch target to nearest enemy
         } else {
             target = null;
-            print("There are no enemies to target!");
+            //print("There are no enemies to target!");
         }
         
     }
