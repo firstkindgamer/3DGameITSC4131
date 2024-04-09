@@ -7,24 +7,25 @@ public class Skill : MonoBehaviour
 {
     public int id;
 
-    public TMP_Text TitleText;
-    public TMP_Text DescriptionText;
+    public Text TitleText;
+    public Text DescriptionText;
 
     public int[] ConnectedSkills;
 
     public void UpdateUI()
     {
         TitleText.text = $"{skillTree.SkillLevels[id]}/{skillTree.SkillCaps[id]}\n{skillTree.SkillNames[id]}";
-        DescriptionText.text = $"{skillTree.SkillDescriptions[id]}\nCost: {skillTree.SkillPoints}/1 SP";
+        DescriptionText.text = $"{skillTree.SkillDescriptions[id]}";
 
         //changes color based on talent progress
+        //doesnt work
         GetComponent<Image>().color = skillTree.SkillLevels[id] >= skillTree.SkillCaps[id] ? Color.yellow 
         : skillTree.SkillPoints > 0 ? Color.green : Color.white;
 
         foreach (var ConnectedSkill in ConnectedSkills)
         {
-            skillTree.SkillList[ConnectedSkill].gameObject.SetActive(skillTree.SkillLevels[id] > 0);
-            skillTree.ConnectorList[ConnectedSkill].SetActive(skillTree.SkillLevels[id] > 0);
+            skillTree.SkillList[ConnectedSkill].gameObject.SetActive(skillTree.SkillLevels[id] >= skillTree.SkillCaps[id]);
+            skillTree.ConnectorList[ConnectedSkill].SetActive(skillTree.SkillLevels[id] >= skillTree.SkillCaps[id]);
         }
     }
 

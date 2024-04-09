@@ -45,7 +45,9 @@ public class SkillTree : MonoBehaviour
         for (var i = 0; i < SkillList.Count; i++) SkillList[i].id = i;
         
         SkillList[0].ConnectedSkills = new[] {1, 2, 3};
-        SkillList[2].ConnectedSkills = new[] {4, 5};
+        SkillList[3].ConnectedSkills = new[] {4, 5};
+
+        for(var i = 0; i < 6; i++) SkillLevels[i] = 0;
 
         UpdateAllSkillUi();
     }
