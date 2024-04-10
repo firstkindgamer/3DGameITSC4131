@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using static SkillTree;
+using static Skill;
 
 public class Tower : MonoBehaviour
 {
@@ -16,7 +18,8 @@ public class Tower : MonoBehaviour
 
     public GameObject bulletPrefab;
     public Transform firePoint;
-
+    
+    float fireRateModifier;
     
 
     // Start is called before the first frame update
@@ -27,7 +30,11 @@ public class Tower : MonoBehaviour
 
     void UpdateTarget()
     {
-        
+        //Update values based on skill tree
+        //fireRateModifier = SkillTree.SkillLevels[0];
+        //fireRate = 1 - SkillTree.SkillLevels[0];
+
+
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;

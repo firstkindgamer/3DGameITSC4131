@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
+using static SkillTree;
 
 public class Bullet : MonoBehaviour
 {
@@ -26,7 +29,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        
         Vector3 dir = target.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
 
@@ -43,6 +46,8 @@ public class Bullet : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
+            try
+            {
             GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
             Destroy(effectIns, 2f); //destroy instance after two seconds
 
@@ -50,6 +55,10 @@ public class Bullet : MonoBehaviour
             other.GetComponent<Enemy>().health -= damage;
             if (other.GetComponent<Enemy>().health <= 0)
                 Destroy(other.gameObject);
+        }catch (NullReferenceException ex1)
+        {
+            //This was clogging up Console
+            Debug.Log("The targets health is not properly configured!");
         }
     }
 
@@ -60,4 +69,5 @@ public class Bullet : MonoBehaviour
     //    Destroy(target.gameObject); //TEMPORARY REPLACEMENT FOR DAMAGE
     //    Destroy(gameObject);
     //}
+    }
 }
