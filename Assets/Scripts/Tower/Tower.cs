@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using static SkillTree;
 using static Skill;
+using static SkillTree;
 
 public class Tower : MonoBehaviour
 {
     [Header("Attributes")]
     public Transform target;
     public float range = 15f;
-    public float fireRate = 1f; //fire once a second by default
+    public float baseFireRate = 1f; //fire once a second by default
     private float fireCountdown = 0f; //is divided by firerate
 
     [Header("Unity Setup Fields")]
@@ -31,8 +31,9 @@ public class Tower : MonoBehaviour
     void UpdateTarget()
     {
         //Update values based on skill tree
-        //fireRateModifier = SkillTree.SkillLevels[0];
-        //fireRate = 1 - SkillTree.SkillLevels[0];
+        fireRateModifier = skillTree.SkillLevels[0];
+        float fireRate;
+        fireRate = baseFireRate - skillTree.SkillLevels[0];
 
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
@@ -78,7 +79,7 @@ public class Tower : MonoBehaviour
         if (fireCountdown <= 0f)
         {
             Shoot();
-            fireCountdown = 1f / fireRate;
+            fireCountdown = 1f / baseFireRate - skillTree.SkillLevels[0];
         }
 
         fireCountdown -= Time.deltaTime; 

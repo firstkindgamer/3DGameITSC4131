@@ -15,7 +15,7 @@ public class Skill : MonoBehaviour
     public void UpdateUI()
     {
         TitleText.text = $"{skillTree.SkillLevels[id]}/{skillTree.SkillCaps[id]}\n{skillTree.SkillNames[id]}";
-        DescriptionText.text = $"{skillTree.SkillDescriptions[id]}";
+        DescriptionText.text = $"{skillTree.SkillDescriptions[id]}"; 
 
         //changes color based on talent progress
         //doesnt work
@@ -31,7 +31,7 @@ public class Skill : MonoBehaviour
 
     public void Buy()
     {
-        if (skillTree.SkillPoints < 1 || skillTree.SkillLevels[id] >= skillTree.SkillCaps[id]) return;
+        if (skillTree.SkillPoints < 1 || skillTree.SkillLevels[id] >= skillTree.SkillCaps[id]) return; //If at skill cap or dont have points
         skillTree.SkillPoints -= 1;
         skillTree.SkillLevels[id]++;
         skillTree.UpdateAllSkillUi();
