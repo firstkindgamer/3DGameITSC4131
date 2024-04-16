@@ -669,7 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1073741824
-  uniqueID: 2358557415485617682
+  uniqueID: 5118983177578993754
   updateError: 1
   checkTime: 0.2
 --- !u!114 &1924177743476026971
@@ -686,7 +686,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   range: 15
-  fireRate: 1
+  baseFireRate: 1
+  fireMode: 0
   enemyTag: Enemy
   partToRotate: {fileID: 8486470940042201205}
   bulletPrefab: {fileID: 6345750128694045961, guid: eee75196c302d45cb88b70935f46eddc, type: 3}
