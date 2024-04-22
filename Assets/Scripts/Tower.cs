@@ -11,7 +11,7 @@ public class Tower : MonoBehaviour
     public float range = 15f;
     public float baseFireRate = 1f; //fire once a second by default
     private float fireCountdown = 0f; //is divided by firerate
-    public enum Mode {Close, Distant}
+    public enum Mode {First, Close, Distant}
     public Mode fireMode;
     public enum Targeting {Ground, Air, GroundAir}
     public Targeting targetMethod;
@@ -24,6 +24,7 @@ public class Tower : MonoBehaviour
 
     public GameObject bulletPrefab;
     public Transform firePoint;
+    List<GameObject> enemiesInRange = new List<GameObject>();
     
     float fireRateModifier;
     
@@ -54,16 +55,26 @@ public class Tower : MonoBehaviour
         {
             enemies = GameObject.FindGameObjectsWithTag(airTag);
         }
+
         float shortestDistance = Mathf.Infinity;
         float farthestDistance = 0;
         GameObject closestEnemy = null;
         GameObject farthestEnemy = null;
 
-        foreach (GameObject enemy in enemies) //find the nearest enemy
+        foreach (GameObject enemy in enemies) //find the enemies
         {
-            if (fireMode == Mode.Distant)
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            if (fireMode == Mode.First)
             {
-                float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+                if(distanceToEnemy <= range)
+                {
+                    if (!enemiesInRange.Contains(enemy))
+                    {
+                        enemiesInRange.Add(enemy);
+                    }
+                }
+            }else if (fireMode == Mode.Distant)
+            {
                 if (distanceToEnemy > farthestDistance && distanceToEnemy <= range)
                 {
                     farthestDistance = distanceToEnemy;
@@ -71,7 +82,6 @@ public class Tower : MonoBehaviour
                 }
             } else if(fireMode == Mode.Close)
             {
-                float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
                 if (distanceToEnemy < shortestDistance)
                 {
                     shortestDistance = distanceToEnemy;
@@ -82,7 +92,17 @@ public class Tower : MonoBehaviour
 
         }
 
-        if(fireMode == Mode.Close)
+        if (fireMode == Mode.First)
+        {
+            if(enemiesInRange[0] != null)
+            {
+                target = enemiesInRange.Find(x => x).transform; //gets the first enemy in range
+                //enemiesInRange.Clear();
+            } else{
+                target = null;
+                //enemiesInRange.Clear();
+            }
+        }else if(fireMode == Mode.Close)
         {
             if (closestEnemy != null && shortestDistance <= range)
             {
