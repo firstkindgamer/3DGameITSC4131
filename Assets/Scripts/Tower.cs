@@ -13,10 +13,13 @@ public class Tower : MonoBehaviour
     private float fireCountdown = 0f; //is divided by firerate
     public enum Mode {Close, Distant}
     public Mode fireMode;
+    public enum Targeting {Ground, Air, GroundAir}
+    public Targeting targetMethod;
     public float angleOffset = 90;
 
     [Header("Unity Setup Fields")]
-    public string enemyTag = "Enemy";
+    public string groundTag = "Enemy";
+    public string airTag = "AirEnemy";
     public Transform partToRotate; 
 
     public GameObject bulletPrefab;
@@ -39,7 +42,18 @@ public class Tower : MonoBehaviour
         fireRate = baseFireRate - skillTree.SkillLevels[0];
 
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(groundTag); //default ground to not bug out other code
+        if (targetMethod == Targeting.GroundAir)
+        {
+            //No clue head empty FIX THIS
+        }
+        if (targetMethod == Targeting.Ground)
+        {
+            //Continue
+        } else if(targetMethod == Targeting.Air)
+        {
+            enemies = GameObject.FindGameObjectsWithTag(airTag);
+        }
         float shortestDistance = Mathf.Infinity;
         float farthestDistance = 0;
         GameObject closestEnemy = null;
