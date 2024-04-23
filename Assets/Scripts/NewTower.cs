@@ -16,7 +16,7 @@ public class NewTower : MonoBehaviour
     public TowerTargetPriority targetPriority;
     public bool rotateTowardsTarget;
 
-    [Header("Attack Stuff")]
+    [Header("Set Up")]
     public float attackRate;
     private float fireCountdown;
     public GameObject projectilePrefab;
@@ -26,22 +26,39 @@ public class NewTower : MonoBehaviour
     public int projectileDamage;
     public float projectileSpeed;
 
+    public Transform partToRotate; 
+    public float angleOffset;
+
     void Start()
     {
         fireCountdown = attackRate;
+        //This could cause issues if you update firerate during gameplay
+        //Oh well!
+
+        SphereCollider myCollider = GetComponent<SphereCollider>();
+        myCollider.radius = range;
+        //same thing LOL
     }
 
     void Update()
     {
+         
         if (fireCountdown <= 0f)
         {
-            //print("Updating Enemy!");
             curEnemy = GetEnemy();
             if(curEnemy != null)
             {
+                if(rotateTowardsTarget)
+                {
+                    Vector3 dir = curEnemy.transform.position - transform.position;
+                    Quaternion lookRotation = Quaternion.LookRotation(dir);
+                    Vector3 rotation = lookRotation.eulerAngles;
+                    partToRotate.rotation = Quaternion.Euler (0f, rotation.y + angleOffset, 0f); 
+                }
+                
                 Shoot();
                 fireCountdown = attackRate;
-            } else print("No enemy!");
+            } 
             
         }
         fireCountdown -= Time.deltaTime; 
@@ -49,7 +66,7 @@ public class NewTower : MonoBehaviour
 
     GameObject GetEnemy()
     {
-        //curEnemiesInRange.RemoveAll(x => x == null);
+        curEnemiesInRange.RemoveAll(x => x == null);
 
         //runs to save resources if choise is obvious
         if(curEnemiesInRange.Count == 0)
@@ -117,16 +134,14 @@ public class NewTower : MonoBehaviour
         if(other.CompareTag("Enemy"))
         {
             curEnemiesInRange.Add(other.gameObject);
-        }else
-        print("Nothing entering!");
+        }
     }
 
     private void OnTriggerExit (Collider other)
     {
         if(other.CompareTag("Enemy"))
         {
-            print("Enemy Leaving!");
             curEnemiesInRange.Remove(other.gameObject);
-        } else print("Nothing leaving!");
+        }
     }
 }
