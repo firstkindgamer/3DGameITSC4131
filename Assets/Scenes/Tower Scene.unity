@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -456,6 +456,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1132, y: 359}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &325736415
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1343338826066401633, guid: ad5002276c7233144b81ddc53e4d9496, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.61877155
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343338826066401633, guid: ad5002276c7233144b81ddc53e4d9496, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343338826066401633, guid: ad5002276c7233144b81ddc53e4d9496, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.4879327
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343338826066401633, guid: ad5002276c7233144b81ddc53e4d9496, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343338826066401633, guid: ad5002276c7233144b81ddc53e4d9496, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343338826066401633, guid: ad5002276c7233144b81ddc53e4d9496, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343338826066401633, guid: ad5002276c7233144b81ddc53e4d9496, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343338826066401633, guid: ad5002276c7233144b81ddc53e4d9496, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343338826066401633, guid: ad5002276c7233144b81ddc53e4d9496, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343338826066401633, guid: ad5002276c7233144b81ddc53e4d9496, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6464740589394068902, guid: ad5002276c7233144b81ddc53e4d9496, type: 3}
+      propertyPath: m_Name
+      value: TowerSniper Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ad5002276c7233144b81ddc53e4d9496, type: 3}
 --- !u!1001 &369928237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -851,6 +908,10 @@ PrefabInstance:
     - target: {fileID: 2371532280849767705, guid: e8902d2a156770f49b4eb10c418b79ea, type: 3}
       propertyPath: m_Name
       value: TowerGattling
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371532280849767705, guid: e8902d2a156770f49b4eb10c418b79ea, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3144269725456680867, guid: e8902d2a156770f49b4eb10c418b79ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2267,3 +2328,4 @@ SceneRoots:
   - {fileID: 1615379742}
   - {fileID: 1563943765}
   - {fileID: 656966338}
+  - {fileID: 325736415}
