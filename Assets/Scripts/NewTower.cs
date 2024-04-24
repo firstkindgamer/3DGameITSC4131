@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections;
@@ -6,7 +7,7 @@ using UnityEngine;
 
 public class NewTower : MonoBehaviour
 {
-    public enum TowerTargetPriority{First, Close, Strong}
+    public enum TowerTargetPriority{First, Last, Strongest, Weakest}
 
     [Header("Attributes")]
     public float range;
@@ -80,24 +81,16 @@ public class NewTower : MonoBehaviour
             {
                 return curEnemiesInRange[0];
             }
-            case TowerTargetPriority.Close:
+            case TowerTargetPriority.Last:
             {
-                GameObject closest = null;
-                float dist = 99;
-
-                for(int x = 0; x < curEnemiesInRange.Count; x++)
+                int i = -1;
+                foreach(GameObject enemyGO in curEnemiesInRange)
                 {
-                    float d = (transform.position - curEnemiesInRange[x].transform.position).sqrMagnitude;
-
-                    if(d < dist)
-                    {
-                        closest = curEnemiesInRange[x];
-                        dist = d;
-                    }
+                    i++;
                 }
-                return closest;
+                return curEnemiesInRange[i];
             }
-            case TowerTargetPriority.Strong:
+            case TowerTargetPriority.Strongest:
             {
                 GameObject strongest = null;
                 float strongestHealth = -1;
@@ -112,6 +105,22 @@ public class NewTower : MonoBehaviour
                     }
                 }
                 return strongest;
+            }
+            case TowerTargetPriority.Weakest:
+            {
+                GameObject weakest = null;
+                float weakestHealth = Mathf.Infinity;
+
+                foreach(GameObject enemyGO in curEnemiesInRange)
+                {
+                    Enemy enemy = enemyGO.GetComponent<Enemy>();
+                    if(enemy.health < weakestHealth)
+                    {
+                        weakest = enemyGO;
+                        weakestHealth = enemy.health;
+                    }
+                }
+                return weakest;
             }
         }
         return null;
@@ -145,3 +154,23 @@ public class NewTower : MonoBehaviour
         }
     }
 }
+
+/* Unused code for Close priority
+            case TowerTargetPriority.Close:
+            {
+                GameObject closest = null;
+                float dist = 99;
+
+                for(int x = 0; x < curEnemiesInRange.Count; x++)
+                {
+                    float d = (transform.position - curEnemiesInRange[x].transform.position).sqrMagnitude;
+
+                    if(d < dist)
+                    {
+                        closest = curEnemiesInRange[x];
+                        dist = d;
+                    }
+                }
+                return closest;
+            }
+*/
