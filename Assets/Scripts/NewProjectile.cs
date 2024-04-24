@@ -8,14 +8,16 @@ public class NewProjectile : MonoBehaviour
     private GameObject target;
     private int damage;
     private float moveSpeed;
+    private bool isCleave;
 
     public GameObject hitSpawnPrefab;
 
-    public void Initialize(GameObject target, int damage, float moveSpeed)
+    public void Initialize(GameObject target, int damage, float moveSpeed, bool cleave)
     {
         this.target = target;
         this.damage = damage;
         this.moveSpeed = moveSpeed;
+        this.isCleave = cleave;
     }
 
     void Update()

@@ -13,22 +13,25 @@ public class NewTower : MonoBehaviour
     public float range;
     private List<GameObject> curEnemiesInRange = new List<GameObject>();
     private GameObject curEnemy;
-
-    public TowerTargetPriority targetPriority;
-    public bool rotateTowardsTarget;
-
-    [Header("Set Up")]
     public float attackRate;
     private float fireCountdown;
+    public TowerTargetPriority targetPriority;
+    
+    [Header("Bullet Settings")]
     public GameObject projectilePrefab;
-    public Transform firePoint;
-
-
     public int projectileDamage;
     public float projectileSpeed;
+    public bool bulletCleave;
 
+    [Header("Set Up")]
+    public Transform firePoint;
     public Transform partToRotate; 
     public float angleOffset;
+    public bool rotateTowardsTarget;
+
+    
+
+    
 
     void Start()
     {
@@ -49,7 +52,7 @@ public class NewTower : MonoBehaviour
             curEnemy = GetEnemy();
             if(curEnemy != null)
             {
-                if(rotateTowardsTarget)
+                if(rotateTowardsTarget) //Note this only rotates tower when shooting, not in idle
                 {
                     Vector3 dir = curEnemy.transform.position - transform.position;
                     Quaternion lookRotation = Quaternion.LookRotation(dir);
@@ -134,7 +137,7 @@ public class NewTower : MonoBehaviour
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         }
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        proj.GetComponent<NewProjectile>().Initialize(curEnemy, projectileDamage, projectileSpeed);
+        proj.GetComponent<NewProjectile>().Initialize(curEnemy, projectileDamage, projectileSpeed, bulletCleave);
     }
 
 
