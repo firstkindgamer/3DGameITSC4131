@@ -137,7 +137,7 @@ public class NewTower : MonoBehaviour
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
         }
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        proj.GetComponent<NewProjectile>().Initialize(curEnemy, projectileDamage, projectileSpeed, bulletCleave);
+        proj.GetComponent<NewProjectile>().Initialize(curEnemy, projectileDamage, projectileSpeed, bulletCleave, curEnemiesInRange);
     }
 
 
