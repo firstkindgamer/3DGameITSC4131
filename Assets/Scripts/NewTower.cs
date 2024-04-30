@@ -46,24 +46,27 @@ public class NewTower : MonoBehaviour
 
     void Update()
     {
-         
+        if(curEnemy == null && curEnemiesInRange.Count != 0)
+        {
+            curEnemy = GetEnemy();
+        }
+
+        if(rotateTowardsTarget && curEnemy != null) //Note this only rotates tower when shooting, not in idle
+        {
+            Vector3 dir = curEnemy.transform.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(dir);
+            Vector3 rotation = lookRotation.eulerAngles;
+            partToRotate.rotation = Quaternion.Euler (0f, rotation.y + angleOffset, 0f); 
+        }
+
         if (fireCountdown <= 0f)
         {
             curEnemy = GetEnemy();
             if(curEnemy != null)
             {
-                if(rotateTowardsTarget) //Note this only rotates tower when shooting, not in idle
-                {
-                    Vector3 dir = curEnemy.transform.position - transform.position;
-                    Quaternion lookRotation = Quaternion.LookRotation(dir);
-                    Vector3 rotation = lookRotation.eulerAngles;
-                    partToRotate.rotation = Quaternion.Euler (0f, rotation.y + angleOffset, 0f); 
-                }
-                
                 Shoot();
                 fireCountdown = attackRate;
-            } 
-            
+            }  
         }
         fireCountdown -= Time.deltaTime; 
     }
@@ -145,6 +148,7 @@ public class NewTower : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
+            print("Entering!");
             curEnemiesInRange.Add(other.gameObject);
         }
     }
