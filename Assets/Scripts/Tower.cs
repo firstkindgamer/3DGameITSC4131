@@ -1,168 +1,185 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
-using static Skill;
-using static SkillTree;
 
 public class Tower : MonoBehaviour
 {
+    public static Tower tower;
+    private void Awake() => tower = this;
+    public enum TowerTargetPriority{First, Last, Strongest, Weakest}
+
     [Header("Attributes")]
-    public Transform target;
-    public float range = 15f;
-    public float baseFireRate = 1f; //fire once a second by default
-    private float fireCountdown = 0f; //is divided by firerate
-    public enum Mode {First, Close, Distant}
-    public Mode fireMode;
-    public enum Targeting {Ground, Air, GroundAir}
-    public Targeting targetMethod;
-    public float angleOffset = 90;
+    public float range;
+    private List<GameObject> curEnemiesInRange = new List<GameObject>();
+    private GameObject curEnemy;
+    public float attackRate;
+    private float fireCountdown;
+    public TowerTargetPriority targetPriority;
+    
+    [Header("Bullet Settings")]
+    public GameObject projectilePrefab;
+    public int projectileDamage;
+    public float projectileSpeed;
+    public bool bulletCleave;
 
-    [Header("Unity Setup Fields")]
-    public string groundTag = "Enemy";
-    public string airTag = "AirEnemy";
-    public Transform partToRotate; 
-
-    public GameObject bulletPrefab;
+    [Header("Set Up")]
     public Transform firePoint;
-    List<GameObject> enemiesInRange = new List<GameObject>();
-    
-    float fireRateModifier;
+    public Transform partToRotate; 
+    public float angleOffset;
+    public bool rotateTowardsTarget;
+
     
 
-    // Start is called before the first frame update
+    
+
     void Start()
     {
-        InvokeRepeating("UpdateTarget", 0f, baseFireRate/2); //Update target every half second
+        fireCountdown = attackRate;
+        //This could cause issues if you update firerate during gameplay
+        //Oh well!
+
+        SphereCollider myCollider = GetComponent<SphereCollider>();
+        myCollider.radius = range;
+        //same thing LOL
     }
 
-    void UpdateTarget()
-    {
-        //Update values based on skill tree
-        fireRateModifier = skillTree.SkillLevels[0];
-        float fireRate;
-        fireRate = baseFireRate - skillTree.SkillLevels[0];
-
-
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(groundTag); //default ground to not bug out other code
-        if (targetMethod == Targeting.GroundAir)
-        {
-            //No clue head empty FIX THIS
-        }
-        if (targetMethod == Targeting.Ground)
-        {
-            //Continue
-        } else if(targetMethod == Targeting.Air)
-        {
-            enemies = GameObject.FindGameObjectsWithTag(airTag);
-        }
-
-        float shortestDistance = Mathf.Infinity;
-        float farthestDistance = 0;
-        GameObject closestEnemy = null;
-        GameObject farthestEnemy = null;
-
-        foreach (GameObject enemy in enemies) //find the enemies
-        {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if (fireMode == Mode.First)
-            {
-                if(distanceToEnemy <= range)
-                {
-                    if (!enemiesInRange.Contains(enemy))
-                    {
-                        enemiesInRange.Add(enemy);
-                    }
-                }
-            }else if (fireMode == Mode.Distant)
-            {
-                if (distanceToEnemy > farthestDistance && distanceToEnemy <= range)
-                {
-                    farthestDistance = distanceToEnemy;
-                    farthestEnemy = enemy;
-                }
-            } else if(fireMode == Mode.Close)
-            {
-                if (distanceToEnemy < shortestDistance)
-                {
-                    shortestDistance = distanceToEnemy;
-                    closestEnemy = enemy;
-                }
-            }
-            
-
-        }
-
-        if (fireMode == Mode.First)
-        {
-            if(enemiesInRange[0] != null)
-            {
-                target = enemiesInRange.Find(x => x).transform; //gets the first enemy in range
-                //enemiesInRange.Clear();
-            } else{
-                target = null;
-                //enemiesInRange.Clear();
-            }
-        }else if(fireMode == Mode.Close)
-        {
-            if (closestEnemy != null && shortestDistance <= range)
-            {
-                target = closestEnemy.transform; //switch target to nearest enemy
-            } else {
-                target = null;
-            }
-        }else if(fireMode == Mode.Distant)
-        {
-            if (farthestEnemy != null && farthestDistance <= range)
-            {
-                //print("Switching target!");
-                target = farthestEnemy.transform; //switch target to nearest enemy
-            } else {
-                target = null;
-                //print("There are no enemies to target!");
-            }
-        }
-        
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (target == null) //if no target do nothing
-            return;
-        
-        //Rotates partToRotate to face target
-        //BUG: Some part of this teleports new objects into the base of the tower. 
-        //Tagged until we have a better way to debug
+        if(curEnemy == null && curEnemiesInRange.Count != 0)
+        {
+            curEnemy = GetEnemy();
+        }
 
-         Vector3 dir = target.position - transform.position;
-         Quaternion lookRotation = Quaternion.LookRotation(dir);
-         Vector3 rotation = lookRotation.eulerAngles;
-         partToRotate.rotation = Quaternion.Euler (0f, rotation.y + angleOffset, 0f); //-180 is an offset for clockwork tower
+        if(rotateTowardsTarget && curEnemy != null) //Note this only rotates tower when shooting, not in idle
+        {
+            Vector3 dir = curEnemy.transform.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(dir);
+            Vector3 rotation = lookRotation.eulerAngles;
+            partToRotate.rotation = Quaternion.Euler (0f, rotation.y + angleOffset, 0f); 
+        }
 
         if (fireCountdown <= 0f)
         {
-            Shoot();
-            fireCountdown = 1f / baseFireRate - skillTree.SkillLevels[0];
+            curEnemy = GetEnemy();
+            if(curEnemy != null)
+            {
+                Shoot();
+                fireCountdown = attackRate;
+            }  
         }
-
         fireCountdown -= Time.deltaTime; 
+    }
+
+    GameObject GetEnemy()
+    {
+        curEnemiesInRange.RemoveAll(x => x == null);
+
+        //runs to save resources if choise is obvious
+        if(curEnemiesInRange.Count == 0)
+            return null;
+        if(curEnemiesInRange.Count == 1)
+            return curEnemiesInRange[0];
+
+        switch(targetPriority)
+        {
+            case TowerTargetPriority.First:
+            {
+                return curEnemiesInRange[0];
+            }
+            case TowerTargetPriority.Last:
+            {
+                int i = -1;
+                foreach(GameObject enemyGO in curEnemiesInRange)
+                {
+                    i++;
+                }
+                return curEnemiesInRange[i];
+            }
+            case TowerTargetPriority.Strongest:
+            {
+                GameObject strongest = null;
+                float strongestHealth = -1;
+                
+                foreach(GameObject enemyGO in curEnemiesInRange)
+                {
+                    Enemy enemy = enemyGO.GetComponent<Enemy>();
+                    if(enemy.health > strongestHealth)
+                    {
+                        strongest = enemyGO;
+                        strongestHealth = enemy.health;
+                    }
+                }
+                return strongest;
+            }
+            case TowerTargetPriority.Weakest:
+            {
+                GameObject weakest = null;
+                float weakestHealth = Mathf.Infinity;
+
+                foreach(GameObject enemyGO in curEnemiesInRange)
+                {
+                    Enemy enemy = enemyGO.GetComponent<Enemy>();
+                    if(enemy.health < weakestHealth)
+                    {
+                        weakest = enemyGO;
+                        weakestHealth = enemy.health;
+                    }
+                }
+                return weakest;
+            }
+        }
+        return null;
     }
 
     void Shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
-
-        if(bullet != null)
+        if(rotateTowardsTarget)
         {
-            bullet.Seek(target);
+            transform.LookAt(curEnemy.transform);
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+        }
+        GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        proj.GetComponent<Projectile>().Initialize(curEnemy, projectileDamage, projectileSpeed, bulletCleave, curEnemiesInRange);
+    }
+
+
+    private void OnTriggerEnter (Collider other)
+    {
+        if(other.CompareTag("Enemy"))
+        {
+            print("Entering!");
+            curEnemiesInRange.Add(other.gameObject);
         }
     }
 
-    void OnDrawGizmosSelected() //Draws range if tower is selected in unity
+    private void OnTriggerExit (Collider other)
     {
-        Gizmos.color= Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        if(other.CompareTag("Enemy"))
+        {
+            curEnemiesInRange.Remove(other.gameObject);
+        }
     }
 }
+
+/* Unused code for Close priority
+            case TowerTargetPriority.Close:
+            {
+                GameObject closest = null;
+                float dist = 99;
+
+                for(int x = 0; x < curEnemiesInRange.Count; x++)
+                {
+                    float d = (transform.position - curEnemiesInRange[x].transform.position).sqrMagnitude;
+
+                    if(d < dist)
+                    {
+                        closest = curEnemiesInRange[x];
+                        dist = d;
+                    }
+                }
+                return closest;
+            }
+*/

@@ -35,5 +35,6 @@ public class Skill : MonoBehaviour
         skillTree.SkillPoints -= 1;
         skillTree.SkillLevels[id]++;
         skillTree.UpdateAllSkillUi();
+        skillTree.UpdatePlayerStats(id);
     }
 }

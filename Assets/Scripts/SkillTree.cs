@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static Skill;
+using static Tower;
 
 public class SkillTree : MonoBehaviour
 {
@@ -55,5 +56,15 @@ public class SkillTree : MonoBehaviour
     public void UpdateAllSkillUi()
     {
         foreach (var skill in SkillList) skill.UpdateUI();
+    }
+
+    public void UpdatePlayerStats(int talentID)
+    {
+        switch(talentID)
+        {
+            case 0:
+            tower.attackRate -= .5f;
+            break;
+        }
     }
 }
