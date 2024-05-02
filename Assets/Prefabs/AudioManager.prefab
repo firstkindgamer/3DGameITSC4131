@@ -49,17 +49,27 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c5abe9dfa8eae54488f53e28777e6fe6, type: 3}
     volume: 1
     pitch: 1
+    sBlend: 0
     loop: 0
     source: {fileID: 0}
   - name: talentFail
     clip: {fileID: 8300000, guid: 4785c7789fea34f44bdba2b8d9100d95, type: 3}
     volume: 1
     pitch: 1
+    sBlend: 0
     loop: 0
     source: {fileID: 0}
   - name: bigShoot1
     clip: {fileID: 8300000, guid: 579a28d4a164b38498bd6c8c21e3328e, type: 3}
     volume: 1
     pitch: 1
+    sBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: shootBounce
+    clip: {fileID: 8300000, guid: 3499015a8e1f8a7418f5701434e660e8, type: 3}
+    volume: 1
+    pitch: 1
+    sBlend: 1
     loop: 0
     source: {fileID: 0}
