@@ -143,6 +143,7 @@ public class Tower : MonoBehaviour
         }
         GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         proj.GetComponent<Projectile>().Initialize(curEnemy, projectileDamage, projectileSpeed, bulletCleave, curEnemiesInRange);
+        FindObjectOfType<AudioManager>().Play("bigShoot1");
     }
 
 

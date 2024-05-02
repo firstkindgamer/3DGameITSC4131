@@ -57,3 +57,9 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: bigShoot1
+    clip: {fileID: 8300000, guid: 579a28d4a164b38498bd6c8c21e3328e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

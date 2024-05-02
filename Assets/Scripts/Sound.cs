@@ -11,6 +11,8 @@ public class Sound
     public float volume;
     [Range(.1f, 3)]
     public float pitch;
+    [Range(0f, 1)]
+    public float sBlend;
 
     public bool loop;
 
