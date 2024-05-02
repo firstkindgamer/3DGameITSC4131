@@ -31,10 +31,18 @@ public class Skill : MonoBehaviour
 
     public void Buy()
     {
-        if (skillTree.SkillPoints < 1 || skillTree.SkillLevels[id] >= skillTree.SkillCaps[id]) return; //If at skill cap or dont have points
-        skillTree.SkillPoints -= 1;
-        skillTree.SkillLevels[id]++;
-        skillTree.UpdateAllSkillUi();
-        skillTree.UpdatePlayerStats(id);
+        if (skillTree.SkillPoints < 1 || skillTree.SkillLevels[id] >= skillTree.SkillCaps[id])
+        {
+            FindObjectOfType<AudioManager>().Play("talentFail");
+            return; //If at skill cap or dont have points
+        } else
+        {
+            FindObjectOfType<AudioManager>().Play("talentBuy");
+            skillTree.SkillPoints -= 1;
+            skillTree.SkillLevels[id]++;
+            skillTree.UpdateAllSkillUi();
+            skillTree.UpdatePlayerStats(id);
+        }
+        
     }
 }
