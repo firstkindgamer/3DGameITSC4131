@@ -17,7 +17,7 @@ MonoBehaviour:
   baseProjectileDamage: 50
   baseProjectileSpeed: 30
   baseBulletCleave: 0
-  projectilePrefab: {fileID: 6686707445058312324, guid: edc94e3256501a5429fff3f1fee99028, type: 3}
+  projectilePrefab: {fileID: 4751542239965940919, guid: 583e3654a4283264ebb1ebca2bb51879, type: 3}
   angleOffset: 100
   rotateTowardsTarget: 1
   range: 35
