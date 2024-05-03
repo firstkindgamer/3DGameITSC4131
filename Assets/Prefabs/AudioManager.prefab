@@ -73,3 +73,24 @@ MonoBehaviour:
     sBlend: 1
     loop: 0
     source: {fileID: 0}
+  - name: BrickTower
+    clip: {fileID: 8300000, guid: e43a44a5a5f5b5e49a698bf76544b722, type: 3}
+    volume: 1
+    pitch: 1
+    sBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GattlingTower
+    clip: {fileID: 8300000, guid: af26ec82ca85aef41a7a0ee7757d5e0b, type: 3}
+    volume: 1
+    pitch: 1
+    sBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: FreezeTower
+    clip: {fileID: 8300000, guid: ed2a2e580fdc9ec4085c333008643fd5, type: 3}
+    volume: 1
+    pitch: 1
+    sBlend: 1
+    loop: 0
+    source: {fileID: 0}

@@ -9,11 +9,13 @@ using UnityEngine.InputSystem;
 
 public class Projectile : MonoBehaviour
 {
+    public static Projectile projectile;
+    void Awake() => projectile = this;
     private GameObject target;
     private int damage;
     private float moveSpeed;
     private bool isCleave;
-    private int cleaveNumber = 2;
+    public int cleaveNumber = 2;
     private List<GameObject> cleaveTargets = new List<GameObject>();
     
 

@@ -18,8 +18,8 @@ public class Tower : MonoBehaviour
     public enum TowerTargetPriority{First, Last, Strongest, Weakest}
 
 
-    private List<GameObject> curEnemiesInRange = new List<GameObject>();
-    private GameObject curEnemy;
+    protected List<GameObject> curEnemiesInRange = new List<GameObject>();
+    protected GameObject curEnemy;
     private float fireCountdown;
     public TowerTargetPriority targetPriority;
     public Transform firePoint;
@@ -123,7 +123,7 @@ public class Tower : MonoBehaviour
         return null;
     }
 
-    void Shoot()
+    public virtual void Shoot()
     {
         if(towerScriptableObject.rotateTowardsTarget) //rotate towards target
         {

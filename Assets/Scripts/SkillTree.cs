@@ -8,6 +8,7 @@ using static Tower;
 using static GattlingTower;
 using static BrickTower;
 using static FreezeTower;
+using static Projectile;
 
 public class SkillTree : MonoBehaviour
 {
