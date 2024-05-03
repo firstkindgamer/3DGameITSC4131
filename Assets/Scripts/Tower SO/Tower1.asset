@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Tower1
   m_EditorClassIdentifier: 
   range: 35
-  attackRate: 1
-  fireCountdown: 1
+  attackRate: 2
   projectilePrefab: {fileID: 6686707445058312324, guid: edc94e3256501a5429fff3f1fee99028, type: 3}
   projectileDamage: 20
   projectileSpeed: 50
