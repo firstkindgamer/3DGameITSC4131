@@ -5,7 +5,8 @@ using UnityEngine.InputSystem;
 public enum MouseMode
 {
     Camera,
-    TowerPlace
+    TowerPlace,
+    Upgrades
 }
 
 public class CameraMovement : MonoBehaviour
@@ -41,20 +42,59 @@ public class CameraMovement : MonoBehaviour
             transform.eulerAngles = new Vector3(pitch, yaw, 0.0f);
         }
 
-        if (Input.GetKeyDown("left shift"))
+        MouseMode oldMouseMode = mouseMode;
+
+        if (Input.GetKeyDown("f"))
         {
-            //Mouse.current.WarpCursorPosition(cursorPos);
-            Mouse.current.WarpCursorPosition(Camera.main.WorldToScreenPoint(defaultMousePos.position));
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            mouseMode = MouseMode.TowerPlace;
-        } else if (Input.GetKeyUp("left shift"))
-        {
-            //cursorPos = Input.mousePosition;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            mouseMode = MouseMode.Camera;
+            if (mouseMode == MouseMode.Camera || mouseMode == MouseMode.TowerPlace)
+                mouseMode = MouseMode.Upgrades;
+            else if (mouseMode == MouseMode.Upgrades)
+            {
+                if (Input.GetKey("left shift"))
+                    mouseMode = MouseMode.TowerPlace;
+                else
+                    mouseMode = MouseMode.Camera;
+            }
         }
+
+        if (mouseMode != MouseMode.Upgrades)
+        {
+
+            if (Input.GetKeyDown("left shift"))
+            {
+                //Mouse.current.WarpCursorPosition(cursorPos);
+                mouseMode = MouseMode.TowerPlace;
+            }
+            else if (Input.GetKeyUp("left shift"))
+            {
+                //cursorPos = Input.mousePosition;
+                mouseMode = MouseMode.Camera;
+            }
+
+        }
+
+        if (mouseMode != oldMouseMode)
+        {
+            switch (mouseMode)
+            {
+                case MouseMode.Upgrades:
+                    Mouse.current.WarpCursorPosition(new Vector2(Screen.width / 2, Screen.height / 2));
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    break;
+                case MouseMode.TowerPlace:
+                    Mouse.current.WarpCursorPosition(Camera.main.WorldToScreenPoint(defaultMousePos.position));
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    break;
+                case MouseMode.Camera:
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                    break;
+
+            }
+        }
+
     }
 
 }
