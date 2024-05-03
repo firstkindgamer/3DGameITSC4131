@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
 using static SkillTree;
-
-public class Bullet : MonoBehaviour
+/*
+public class OldBullet : MonoBehaviour
 {
     private Transform target;
     public float speed = 70f;
@@ -72,3 +72,4 @@ public class Bullet : MonoBehaviour
     //}
     }
 }
+*/

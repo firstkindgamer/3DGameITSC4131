@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8268678697893146804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8465811677330828460}
+  - component: {fileID: 1252225037068900737}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8465811677330828460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8268678697893146804}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.8325909, y: 1.6542239, z: -0.9451734}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1252225037068900737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8268678697893146804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96e36b67ceeedc44977fd177c8cfbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: talentBuy
+    clip: {fileID: 8300000, guid: 6fa3fafc23c5f5a4484564355bac2b1d, type: 3}
+    volume: 1
+    pitch: 1
+    sBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: talentFail
+    clip: {fileID: 8300000, guid: b9c7201f0793b7247a75227faa5c358a, type: 3}
+    volume: 0.55
+    pitch: 1
+    sBlend: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: bigShoot1
+    clip: {fileID: 8300000, guid: 579a28d4a164b38498bd6c8c21e3328e, type: 3}
+    volume: 1
+    pitch: 1
+    sBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: shootBounce
+    clip: {fileID: 8300000, guid: 3499015a8e1f8a7418f5701434e660e8, type: 3}
+    volume: 1
+    pitch: 1
+    sBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BrickTower
+    clip: {fileID: 8300000, guid: e43a44a5a5f5b5e49a698bf76544b722, type: 3}
+    volume: 1
+    pitch: 1
+    sBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GattlingTower
+    clip: {fileID: 8300000, guid: af26ec82ca85aef41a7a0ee7757d5e0b, type: 3}
+    volume: 1
+    pitch: 1
+    sBlend: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: FreezeTower
+    clip: {fileID: 8300000, guid: ed2a2e580fdc9ec4085c333008643fd5, type: 3}
+    volume: 1
+    pitch: 1
+    sBlend: 1
+    loop: 0
+    source: {fileID: 0}

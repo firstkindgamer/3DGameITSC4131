@@ -4,7 +4,8 @@ using UnityEngine;
 using static Skill;
 using static SkillTree;
 
-public class Tower : MonoBehaviour
+/*
+public class OldTower : MonoBehaviour
 {
     [Header("Attributes")]
     public Transform target;
@@ -166,3 +167,4 @@ public class Tower : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);
     }
 }
+*/

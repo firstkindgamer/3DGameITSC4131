@@ -14552,7 +14552,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  towerToPlace: {fileID: 4575819308620403244, guid: 54af702212dee4b0f8f7bde26d9c8b3a, type: 3}
+  towerToPlace: {fileID: 7025477505023615256, guid: f829de0b50ea685458e2e58cd29e5770, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

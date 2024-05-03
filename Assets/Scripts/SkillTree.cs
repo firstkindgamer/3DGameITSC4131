@@ -4,6 +4,12 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static Skill;
 
+using static Tower;
+using static GattlingTower;
+using static BrickTower;
+using static FreezeTower;
+using static Projectile;
+
 public class SkillTree : MonoBehaviour
 {
     public static SkillTree skillTree;
@@ -55,5 +61,18 @@ public class SkillTree : MonoBehaviour
     public void UpdateAllSkillUi()
     {
         foreach (var skill in SkillList) skill.UpdateUI();
+    }
+
+    public void UpdatePlayerStats(int talentID)
+    {
+        switch(talentID)
+        {
+            case 0:
+            gTower.towerScriptableObject.attackRate -= .5f;
+            break;
+            case 1:
+            tower.towerScriptableObject.attackRate -= .3f;
+            break;
+        }
     }
 }
