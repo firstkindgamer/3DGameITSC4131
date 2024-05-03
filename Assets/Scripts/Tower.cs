@@ -9,7 +9,11 @@ public class Tower : MonoBehaviour
 {
     public static Tower tower;
     private void Awake() => tower = this;
+
+    [SerializeField]
+    private TowerScriptableObject towerScriptableObject;
     public enum TowerTargetPriority{First, Last, Strongest, Weakest}
+    public enum TowerType{Basic, Gattling, Crossbow}
 
     [Header("Attributes")]
     public float range;
@@ -38,12 +42,19 @@ public class Tower : MonoBehaviour
     void Start()
     {
         fireCountdown = attackRate;
-        //This could cause issues if you update firerate during gameplay
-        //Oh well!
+        /*
+        fireCountdown = towerScriptableObject.attackRate;
+        range = towerScriptableObject.range;
+        attackRate = towerScriptableObject.attackRate;
+        projectileDamage = towerScriptableObject.projectileDamage;
+        projectileSpeed = towerScriptableObject.projectileSpeed;
+        bulletCleave = towerScriptableObject.bulletCleave;
+        angleOffset = towerScriptableObject.angleOffset;
+        rotateTowardsTarget = towerScriptableObject.rotateTowardsTarget;
+        */
 
         SphereCollider myCollider = GetComponent<SphereCollider>();
         myCollider.radius = range;
-        //same thing LOL
     }
 
     void Update()
@@ -164,23 +175,3 @@ public class Tower : MonoBehaviour
         }
     }
 }
-
-/* Unused code for Close priority
-            case TowerTargetPriority.Close:
-            {
-                GameObject closest = null;
-                float dist = 99;
-
-                for(int x = 0; x < curEnemiesInRange.Count; x++)
-                {
-                    float d = (transform.position - curEnemiesInRange[x].transform.position).sqrMagnitude;
-
-                    if(d < dist)
-                    {
-                        closest = curEnemiesInRange[x];
-                        dist = d;
-                    }
-                }
-                return closest;
-            }
-*/

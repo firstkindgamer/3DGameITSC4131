@@ -65,6 +65,9 @@ public class SkillTree : MonoBehaviour
             case 0:
             tower.attackRate -= .5f;
             break;
+            case 1:
+            tower.attackRate -= .3f;
+            break;
         }
     }
 }
