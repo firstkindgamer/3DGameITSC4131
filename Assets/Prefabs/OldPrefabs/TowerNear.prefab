@@ -203,8 +203,10 @@ MonoBehaviour:
   range: 15
   baseFireRate: 1
   fireMode: 0
+  targetMethod: 0
   angleOffset: 90
-  enemyTag: Enemy
+  groundTag: Enemy
+  airTag: AirEnemy
   partToRotate: {fileID: 1073491156158045218}
   bulletPrefab: {fileID: 6345750128694045961, guid: eee75196c302d45cb88b70935f46eddc, type: 3}
   firePoint: {fileID: 7208957078522880695}
@@ -256,6 +258,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7568500194073827396, guid: a02da2e1331bc487c9f8b28b28463f93, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: -2684335245646866234, guid: a02da2e1331bc487c9f8b28b28463f93, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
@@ -272,9 +278,45 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: -1373095779446439467, guid: a02da2e1331bc487c9f8b28b28463f93, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a02da2e1331bc487c9f8b28b28463f93, type: 3}
       propertyPath: m_Name
       value: Clockwork_Cannon_Tower (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a02da2e1331bc487c9f8b28b28463f93, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1491122945364802959, guid: a02da2e1331bc487c9f8b28b28463f93, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4390017207039167815, guid: a02da2e1331bc487c9f8b28b28463f93, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5290205865598989637, guid: a02da2e1331bc487c9f8b28b28463f93, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5715263152525381070, guid: a02da2e1331bc487c9f8b28b28463f93, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6334403470451083119, guid: a02da2e1331bc487c9f8b28b28463f93, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6488700496061476625, guid: a02da2e1331bc487c9f8b28b28463f93, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953606483559150473, guid: a02da2e1331bc487c9f8b28b28463f93, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
