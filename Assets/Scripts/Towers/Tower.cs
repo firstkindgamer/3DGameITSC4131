@@ -5,13 +5,16 @@ using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class SOTower : MonoBehaviour
+public class Tower : MonoBehaviour
 {
-    public static SOTower soTower;
-    private void Awake() => soTower = this;
+    public static Tower tower;
+    private void Awake() 
+    {
+        tower = this;
+    }
 
     [SerializeField]
-    private TowerScriptableObject towerScriptableObject;
+    public TowerScriptableObject towerScriptableObject;
     public enum TowerTargetPriority{First, Last, Strongest, Weakest}
 
 

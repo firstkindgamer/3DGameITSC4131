@@ -10,13 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c71869da3eda23341b7b6a27991a29e3, type: 3}
-  m_Name: Tower1
+  m_Name: GattlingTower
   m_EditorClassIdentifier: 
-  range: 35
-  attackRate: 2
+  baseRange: 25
+  baseAttackRate: 0.5
+  baseProjectileDamage: 13
+  baseProjectileSpeed: 80
+  baseBulletCleave: 0
   projectilePrefab: {fileID: 6686707445058312324, guid: edc94e3256501a5429fff3f1fee99028, type: 3}
+  angleOffset: 100
+  rotateTowardsTarget: 1
+  range: 35
+  attackRate: 1
   projectileDamage: 20
   projectileSpeed: 50
   bulletCleave: 0
-  angleOffset: 100
-  rotateTowardsTarget: 0

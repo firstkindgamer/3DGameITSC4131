@@ -6,10 +6,7 @@ using UnityEngine.Timeline;
 [CreateAssetMenu(fileName = "TowerScriptableObject", menuName = "ScriptableObjects/Tower")]
 public class TowerScriptableObject : ScriptableObject
 {
-    public enum TowerType{Basic, Gattling, Crossbow}
-
     [Header("Set Up Values")]
-    public TowerType towerType = TowerType.Basic;
     public float baseRange = 35;
     public float baseAttackRate = 1;
     public int baseProjectileDamage = 20;

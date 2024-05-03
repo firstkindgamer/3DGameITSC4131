@@ -5,9 +5,9 @@ using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class YoungTower : MonoBehaviour
 {
-    public static Tower tower;
+    public static YoungTower tower;
     private void Awake() => tower = this;
 
     [SerializeField]

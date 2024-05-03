@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static Skill;
+
 using static Tower;
+using static GattlingTower;
+using static BrickTower;
+using static FreezeTower;
 
 public class SkillTree : MonoBehaviour
 {
@@ -63,10 +67,10 @@ public class SkillTree : MonoBehaviour
         switch(talentID)
         {
             case 0:
-            tower.attackRate -= .5f;
+            gTower.towerScriptableObject.attackRate -= .5f;
             break;
             case 1:
-            tower.attackRate -= .3f;
+            tower.towerScriptableObject.attackRate -= .3f;
             break;
         }
     }

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71869da3eda23341b7b6a27991a29e3, type: 3}
+  m_Name: BrickTower
+  m_EditorClassIdentifier: 
+  baseRange: 40
+  baseAttackRate: 1.5
+  baseProjectileDamage: 50
+  baseProjectileSpeed: 30
+  baseBulletCleave: 0
+  projectilePrefab: {fileID: 6686707445058312324, guid: edc94e3256501a5429fff3f1fee99028, type: 3}
+  angleOffset: 100
+  rotateTowardsTarget: 1
+  range: 35
+  attackRate: 1
+  projectileDamage: 20
+  projectileSpeed: 50
+  bulletCleave: 0

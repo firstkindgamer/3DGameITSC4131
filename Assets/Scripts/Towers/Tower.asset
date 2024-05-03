@@ -10,13 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c71869da3eda23341b7b6a27991a29e3, type: 3}
-  m_Name: Tower3
+  m_Name: Tower
   m_EditorClassIdentifier: 
+  towerType: 0
+  baseRange: 35
+  baseAttackRate: 1
+  baseProjectileDamage: 20
+  baseProjectileSpeed: 50
+  baseBulletCleave: 0
+  projectilePrefab: {fileID: 6686707445058312324, guid: edc94e3256501a5429fff3f1fee99028, type: 3}
+  angleOffset: 100
+  rotateTowardsTarget: 1
   range: 35
   attackRate: 1
-  projectilePrefab: {fileID: 6686707445058312324, guid: edc94e3256501a5429fff3f1fee99028, type: 3}
   projectileDamage: 20
   projectileSpeed: 50
   bulletCleave: 0
-  angleOffset: 100
-  rotateTowardsTarget: 1

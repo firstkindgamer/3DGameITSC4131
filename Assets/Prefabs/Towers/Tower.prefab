@@ -749,7 +749,7 @@ GameObject:
   - component: {fileID: 6155258936149036339}
   - component: {fileID: 1279627125533343646}
   - component: {fileID: 5603921530965533615}
-  - component: {fileID: 733891495403745849}
+  - component: {fileID: -3048478587234609638}
   m_Layer: 6
   m_Name: Tower
   m_TagString: Untagged
@@ -808,7 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1073741824
-  uniqueID: 5118983177578993754
+  uniqueID: 45177365591164468
   updateError: 1
   checkTime: 0.2
 --- !u!135 &5603921530965533615
@@ -832,7 +832,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &733891495403745849
+--- !u!114 &-3048478587234609638
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -841,19 +841,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8129217655087637784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5913612a683374da3d7e8e9ec0e59d, type: 3}
+  m_Script: {fileID: 11500000, guid: cafd276a3283d9842af9296e02c82974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 35
+  towerScriptableObject: {fileID: 11400000, guid: a8b69c612a86011459b81422dc171bfa, type: 2}
   targetPriority: 0
-  rotateTowardsTarget: 1
-  attackRate: 1
-  projectilePrefab: {fileID: 6686707445058312324, guid: edc94e3256501a5429fff3f1fee99028, type: 3}
   firePoint: {fileID: 7474859319844226889}
-  projectileDamage: 20
-  projectileSpeed: 50
   partToRotate: {fileID: 3493708067226416420}
-  angleOffset: 100
 --- !u!1 &8642169991098849117
 GameObject:
   m_ObjectHideFlags: 0
