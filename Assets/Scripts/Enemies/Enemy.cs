@@ -5,6 +5,8 @@ using Pathfinding;
 
 public class Enemy : MonoBehaviour
 {
+    private static float FLIGHT_HEIGHT = 7f;
+
     private Seeker seeker;
     public AIDestinationSetter goalDest;
     private FollowerEntity followerEntity;
@@ -17,6 +19,11 @@ public class Enemy : MonoBehaviour
     public float health = 10;
 
     public EnemyBehaviorScriptableObject enemyBehaviors;
+
+    private SphereCollider sphereCollider;
+    public Transform target; //this is where bullets should aim at
+
+    private GameObject visibleObject;
 
     // Start is called before the first frame update
     public void Init()
@@ -36,8 +43,19 @@ public class Enemy : MonoBehaviour
 
         setupParms();
 
-        Instantiate(enemyBehaviors.visibleObjectPrefab, this.transform);
+        visibleObject = Instantiate(enemyBehaviors.visibleObjectPrefab, this.transform);
         Destroy(transform.Find("Cube").gameObject);
+
+        sphereCollider = GetComponent<SphereCollider>();
+        sphereCollider.radius = radius;
+        sphereCollider.center = new Vector3(0, radius, 0);
+        if (isFlying)
+        {
+            visibleObject.transform.localPosition = new Vector3(0, FLIGHT_HEIGHT, 0);
+            sphereCollider.center = new Vector3(0, sphereCollider.center.y + FLIGHT_HEIGHT, 0);
+        }
+        target = transform.Find("Target");
+        target.transform.localPosition = new Vector3(0, transform.position.y + sphereCollider.center.y, 0);
     }
 
     //private void OnTriggerEnter(Collider other)
