@@ -80,6 +80,7 @@ public class Enemy : MonoBehaviour
         visibleObject = Instantiate(enemyBehaviors.visibleObjectPrefab, this.transform);
         Destroy(transform.Find("Cube").gameObject);
         animator = visibleObject.GetComponent<Animator>();
+        animator.SetBool("isRanged", isRanged);
 
         if (!isFlying)
             visibleObject.transform.localPosition = new Vector3(0, 0, 0); //this has to be here or it will go off its rails
@@ -126,7 +127,7 @@ public class Enemy : MonoBehaviour
     {
         goalDest.target = GameObject.Find("Player").transform;
 
-        Tuple <EnemyTargeting, EnemyTargeting> targets = getPrimaryAndSecondaryTargets();
+        Tuple <EnemyTargeting, EnemyTargeting> targets = getPrimaryAndSecondaryTargets(); //could optimize by making an event only change when new tower created or destroyed
         //print(targets.Item1.name);
         //print(targets.Item1.gameObject.transform.position);
 
@@ -134,10 +135,17 @@ public class Enemy : MonoBehaviour
         followerEntity.stopDistance = getStoppingDistance(targets.Item1);
 
         float distanceMovedSinceLastFrame = Vector3.Distance(transform.position, positionLastFrame);
-
         animator.SetBool("isMoving", distanceMovedSinceLastFrame > 0.01f); //this may need to be adjusted to insure the walk animation stops when standing still
-
         positionLastFrame = transform.position;
+
+        if (Vector3.Distance(transform.position, targets.Item1.gameObject.transform.position) < getStoppingDistance(targets.Item1) + 1f
+            || Vector3.Distance(transform.position, targets.Item2.gameObject.transform.position) < getStoppingDistance(targets.Item2) + 1f) //1f for buffer room to attack
+        {
+            animator.SetBool("isAttacking", true);
+        } else
+        {
+            animator.SetBool("isAttacking", false);
+        }
     }
 
     private Vector3 positionLastFrame;
