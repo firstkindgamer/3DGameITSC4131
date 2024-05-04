@@ -10,7 +10,7 @@ public class EnemyBehaviorScriptableObject : ScriptableObject
 
     public bool stopsForTowers;
 
-    public AttackPriority attackPriority;
+    public List<AttackPriorityOptions> attackPriority;
 
     //represented in graph as walkable height
     //represented in follower entity as layer & collides with
@@ -28,8 +28,9 @@ public class EnemyBehaviorScriptableObject : ScriptableObject
     public float range = 0f;
 }
 
-public enum AttackPriority
+public enum AttackPriorityOptions
 {
     Player,
-    Castle
+    Tower,
+    Base
 }

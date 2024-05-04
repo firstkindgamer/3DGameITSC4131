@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : EnemyTargeting
 {
+    public override AttackPriorityOptions type() {
+        return AttackPriorityOptions.Player;
+    }
+
     public CharacterController controller;
     public Vector3 direction;
     public float speed = 8;

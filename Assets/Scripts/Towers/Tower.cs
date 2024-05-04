@@ -5,8 +5,12 @@ using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class Tower : EnemyTargeting
 {
+    public override AttackPriorityOptions type() {
+        return AttackPriorityOptions.Tower;
+    }
+
     public static Tower tower;
     private void Awake() 
     {
