@@ -9,7 +9,7 @@ public abstract class EnemyTargeting : MonoBehaviour
 {
     public abstract AttackPriorityOptions type();
     public Transform Transform { get; } 
-    public float additionalStoppingRadius() { return 1f; }
+    public float additionalStoppingRadius() { return 1f; } //should be the radius of whatever it is
 }
 
 public class Enemy : MonoBehaviour

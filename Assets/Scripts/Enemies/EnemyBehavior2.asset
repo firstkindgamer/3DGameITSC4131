@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 310da3dd5d2e045f682eb27a7094fb64, type: 3}
   m_Name: EnemyBehavior2
   m_EditorClassIdentifier: 
-  visibleObjectPrefab: {fileID: 41310857995994745, guid: d738c630b1a0d41fea81773a5ad7c3ef, type: 3}
+  visibleObjectPrefab: {fileID: 3829473786789921330, guid: 3ebe03b6013914326b4dfc57a7bb22a2, type: 3}
   stopsForTowers: 0
   attackPriority: 010000000000000002000000
   traversableGraphs:
