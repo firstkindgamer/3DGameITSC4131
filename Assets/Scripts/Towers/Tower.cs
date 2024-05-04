@@ -42,7 +42,7 @@ public class Tower : MonoBehaviour
             curEnemy = GetEnemy();
         }
 
-        if(towerScriptableObject.rotateTowardsTarget && curEnemy != null)
+        if(towerScriptableObject.rotateTowardsTarget && curEnemy != null) //rotate towards target
         {
             Vector3 dir = curEnemy.transform.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(dir);
@@ -59,7 +59,7 @@ public class Tower : MonoBehaviour
                 fireCountdown = towerScriptableObject.attackRate; //in case it was updated
             }  
         }
-        fireCountdown -= Time.deltaTime; //count down till next fire
+        fireCountdown -= Time.deltaTime; //count down till next Shoot()
     }
 
     GameObject GetEnemy()

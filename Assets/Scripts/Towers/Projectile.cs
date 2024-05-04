@@ -44,7 +44,6 @@ public class Projectile : MonoBehaviour
             if(Vector3.Distance(transform.position, target.transform.position) < 0.2f)
             {
                 TakeDamage(target, damage);
-                
                 if(hitSpawnPrefab != null)
                 {
                     GameObject effectIns = (GameObject)Instantiate(hitSpawnPrefab, transform.position, Quaternion.identity);
