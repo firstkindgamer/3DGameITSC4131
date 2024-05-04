@@ -135,7 +135,7 @@ public class Enemy : MonoBehaviour
 
         float distanceMovedSinceLastFrame = Vector3.Distance(transform.position, positionLastFrame);
 
-        animator.SetBool("isMoving", distanceMovedSinceLastFrame > 0.02f); //this may need to be adjusted to insure the walk animation stops when standing still
+        animator.SetBool("isMoving", distanceMovedSinceLastFrame > 0.01f); //this may need to be adjusted to insure the walk animation stops when standing still
 
         positionLastFrame = transform.position;
     }
