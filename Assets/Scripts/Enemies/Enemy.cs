@@ -128,6 +128,11 @@ public class Enemy : MonoBehaviour
         target.transform.localPosition = new Vector3(0, transform.position.y + sphereCollider.center.y, 0);
 
         firePoint = GetChildGameObject(visibleObject.gameObject, "FirePoint").transform;
+
+        if (isFlying)
+        {
+            InvokeRepeating("fireBullet", 0, enemyBehaviors.attackRate); //no animator attack, so do this
+        }
     }
 
     public GameObject GetChildGameObject(GameObject fromGameObject, string withName)
@@ -183,7 +188,7 @@ public class Enemy : MonoBehaviour
 
         if (targets.Item1 != null && (distanceToTarget(targets.Item1) < getShootingDistance(targets.Item1)))
         {
-            animator.SetBool("isAttacking", true);
+            animator.SetBool("isAttacking", true); //animator doesnt need to be set for flying enemies, but doing so doesnt do any errors
             currentAttackingTarget = targets.Item1;
         } else if (targets.Item2 != null && distanceToTarget(targets.Item2) < getShootingDistance(targets.Item2))
         {
@@ -200,7 +205,7 @@ public class Enemy : MonoBehaviour
 
     public float distanceToTarget(EnemyTargeting enemy)
     {
-        return Vector3.Distance(transform.position, enemy.gameObject.transform.position);
+        return Vector3.Distance(firePoint.position, enemy.gameObject.transform.position);
     }
 
     public void fireBullet()
@@ -231,7 +236,12 @@ public class Enemy : MonoBehaviour
     private float getShootingDistance(EnemyTargeting targ)
     {
         //use pythagorean theorem here with fly height for flying enemies, they should shoot a bit further
-        return getStoppingDistance(targ) + ATTACK_BUFFER_ROOM;
+        if (isFlying)
+        {
+            float groundStoppingDistance = getStoppingDistance(targ);
+            return Mathf.Sqrt(Mathf.Pow(groundStoppingDistance, 2) + Mathf.Pow(FLIGHT_HEIGHT, 2)) + ATTACK_BUFFER_ROOM;
+        } else
+            return getStoppingDistance(targ) + ATTACK_BUFFER_ROOM;
     }
 
     public bool checkIfFlying()

@@ -118,6 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50c6ba8969f7d4a2b93cc7e1f0c3e08c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingEnemyBehaviors: {fileID: 11400000, guid: b8edf70e869b544f0b55930dfb47648b, type: 2}
-  flyingEnemyBehaviors: {fileID: 11400000, guid: b8edf70e869b544f0b55930dfb47648b, type: 2}
+  walkingEnemyBehaviors: {fileID: 11400000, guid: 7fced6eb2c0bf4365970ae0a25c0676a, type: 2}
+  flyingEnemyBehaviors: {fileID: 11400000, guid: 7fced6eb2c0bf4365970ae0a25c0676a, type: 2}
   enemyPrefab: {fileID: 4852970965275259142, guid: 977a72380f7684826858466efde31086, type: 3}
