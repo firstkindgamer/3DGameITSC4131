@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     public Transform target;
-    public EnemyBehaviorScriptableObject enemyBehaviors;
+    public EnemyBehaviorScriptableObject enemyBehaviors; //use shooting distance from enemy, NOT range from enemyBehaviors
 
     // Start is called before the first frame update
     void Start()

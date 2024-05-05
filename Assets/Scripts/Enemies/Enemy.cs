@@ -52,8 +52,8 @@ public class Enemy : MonoBehaviour
         int priorityCompare = t1Priority.CompareTo(t2Priority);
         if (priorityCompare != 0)
             return priorityCompare;
-        float t1Distance = Vector3.Distance(transform.position, t1.gameObject.transform.position);
-        float t2Distance = Vector3.Distance(transform.position, t2.gameObject.transform.position);
+        float t1Distance = distanceToTarget(t1);
+        float t2Distance = distanceToTarget(t2);
         return t1Distance.CompareTo(t2Distance);
     }
 
@@ -70,6 +70,7 @@ public class Enemy : MonoBehaviour
     private static float FLIGHT_HEIGHT = 7f;
 
     public GameObject enemyBulletPrefab;
+    private Transform firePoint;
 
     private Seeker seeker;
     public AIDestinationSetter goalDest;
@@ -125,6 +126,16 @@ public class Enemy : MonoBehaviour
         }
         target = transform.Find("Target");
         target.transform.localPosition = new Vector3(0, transform.position.y + sphereCollider.center.y, 0);
+
+        firePoint = GetChildGameObject(visibleObject.gameObject, "FirePoint").transform;
+    }
+
+    public GameObject GetChildGameObject(GameObject fromGameObject, string withName)
+    {
+        var allKids = fromGameObject.GetComponentsInChildren<Transform>();
+        var kid = allKids.FirstOrDefault(k => k.gameObject.name == withName);
+        if (kid == null) return null;
+        return kid.gameObject;
     }
 
     //private void OnTriggerEnter(Collider other)
@@ -197,8 +208,10 @@ public class Enemy : MonoBehaviour
         if (currentAttackingTarget == null) return;
 
         EnemyBullet b = Instantiate(enemyBulletPrefab).GetComponent<EnemyBullet>();
-        b.gameObject.transform.position = transform.position;
+        b.gameObject.transform.position = firePoint.position;
         b.enemyBehaviors = enemyBehaviors;
+
+        //use getShootingDistance for this bullet's range, NOT from enemyBehaviors, as flying enemies need a boost
 
         b.target = currentAttackingTarget.gameObject.transform;
     }
@@ -217,6 +230,7 @@ public class Enemy : MonoBehaviour
     private static float ATTACK_BUFFER_ROOM = 1f; //1f for buffer room to attack
     private float getShootingDistance(EnemyTargeting targ)
     {
+        //use pythagorean theorem here with fly height for flying enemies, they should shoot a bit further
         return getStoppingDistance(targ) + ATTACK_BUFFER_ROOM;
     }
 
