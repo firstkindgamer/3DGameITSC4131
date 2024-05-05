@@ -268,12 +268,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e4326548cdf4eedae6b40069874d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyBulletPrefab: {fileID: 8504433347364579907, guid: b2e019a375a614af1a91c20cd9955d84, type: 3}
   goalDest: {fileID: 0}
   isFlying: 0
   radius: 0
   isRanged: 0
   health: 10
   enemyBehaviors: {fileID: 11400000, guid: 7fced6eb2c0bf4365970ae0a25c0676a, type: 2}
+  target: {fileID: 0}
 --- !u!135 &8274064451673278740
 SphereCollider:
   m_ObjectHideFlags: 0

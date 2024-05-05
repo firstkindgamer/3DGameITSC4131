@@ -8,7 +8,6 @@ using System.Linq;
 public abstract class EnemyTargeting : MonoBehaviour
 {
     public abstract AttackPriorityOptions type();
-    public Transform Transform { get; } 
     public float additionalStoppingRadius() { return 1f; } //should be the radius of whatever it is
 }
 
@@ -16,7 +15,7 @@ public class Enemy : MonoBehaviour
 {
     private Tuple<EnemyTargeting, EnemyTargeting> getPrimaryAndSecondaryTargets()
     {
-        List<EnemyTargeting> possibleTargets = FindObjectsOfType<EnemyTargeting>().ToList();
+        List<EnemyTargeting> possibleTargets = FindObjectsOfType<EnemyTargeting>().ToList(); //could optimize by having all enemytargeting objects mantain a single list of themselves
         print(possibleTargets.Count);
         for (int i = possibleTargets.Count - 1; i >= 0; i--)
         {
@@ -35,12 +34,24 @@ public class Enemy : MonoBehaviour
         int priorityCompare = t1Priority.CompareTo(t2Priority);
         if (priorityCompare != 0)
             return priorityCompare;
-        float t1Distance = Vector3.Distance(transform.position, t1.Transform.position);
-        float t2Distance = Vector3.Distance(transform.position, t2.Transform.position);
+        float t1Distance = Vector3.Distance(transform.position, t1.gameObject.transform.position);
+        float t2Distance = Vector3.Distance(transform.position, t2.gameObject.transform.position);
         return t1Distance.CompareTo(t2Distance);
     }
 
+    //public void printList(List<EnemyTargeting> myList) //for debugging
+    //{
+    //    string result = "List contents: ";
+    //    foreach (var item in myList)
+    //    {
+    //        result += item.ToString() + "|| ";
+    //    }
+    //    Debug.Log(result);
+    //}
+
     private static float FLIGHT_HEIGHT = 7f;
+
+    public GameObject enemyBulletPrefab;
 
     private Seeker seeker;
     public AIDestinationSetter goalDest;
@@ -123,12 +134,14 @@ public class Enemy : MonoBehaviour
         followerEntity.rvoSettings.collidesWith = ((Pathfinding.RVO.RVOLayer)(1 << (isFlying ? 2 : 3)));
     }
 
+    Tuple<EnemyTargeting, EnemyTargeting> targets;
+
     // Update is called once per frame
     void Update()
     {
-        goalDest.target = GameObject.Find("Player").transform;
+        //goalDest.target = GameObject.Find("Player").transform;
 
-        Tuple <EnemyTargeting, EnemyTargeting> targets = getPrimaryAndSecondaryTargets(); //could optimize by making an event only change when new tower created or destroyed
+        targets = getPrimaryAndSecondaryTargets(); //could optimize by making an event only change when new tower created or destroyed
         //print(targets.Item1.name);
         //print(targets.Item1.gameObject.transform.position);
 
@@ -139,14 +152,29 @@ public class Enemy : MonoBehaviour
         animator.SetBool("isMoving", distanceMovedSinceLastFrame > 0.01f); //this may need to be adjusted to insure the walk animation stops when standing still
         positionLastFrame = transform.position;
 
-        if (Vector3.Distance(transform.position, targets.Item1.gameObject.transform.position) < getStoppingDistance(targets.Item1) + 1f
-            || Vector3.Distance(transform.position, targets.Item2.gameObject.transform.position) < getStoppingDistance(targets.Item2) + 1f) //1f for buffer room to attack
+        if (distanceToTarget(targets.Item1) < getShootingDistance(targets.Item1)
+            || distanceToTarget(targets.Item2) < getShootingDistance(targets.Item2))
         {
             animator.SetBool("isAttacking", true);
         } else
         {
             animator.SetBool("isAttacking", false);
         }
+    }
+    public float distanceToTarget(EnemyTargeting enemy)
+    {
+        return Vector3.Distance(transform.position, enemy.gameObject.transform.position);
+    }
+
+    public void fireBullet()
+    {
+        EnemyBullet b = Instantiate(enemyBulletPrefab).GetComponent<EnemyBullet>();
+        b.gameObject.transform.position = transform.position;
+        b.enemyBehaviors = enemyBehaviors;
+        if (distanceToTarget(targets.Item1) <= distanceToTarget(targets.Item2))
+            b.target = targets.Item1.transform;
+        else
+            b.target = targets.Item2.transform;
     }
 
     private Vector3 positionLastFrame;
@@ -159,6 +187,11 @@ public class Enemy : MonoBehaviour
     private float getStoppingDistance(EnemyTargeting targ)
     {
         return radius + targ.additionalStoppingRadius() + enemyBehaviors.range;
+    }
+    private static float ATTACK_BUFFER_ROOM = 1f; //1f for buffer room to attack
+    private float getShootingDistance(EnemyTargeting targ)
+    {
+        return getStoppingDistance(targ) + ATTACK_BUFFER_ROOM;
     }
 
     public bool checkIfFlying()

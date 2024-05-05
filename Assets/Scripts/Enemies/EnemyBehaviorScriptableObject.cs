@@ -28,6 +28,10 @@ public class EnemyBehaviorScriptableObject : ScriptableObject
 
     [Header("Set to 0 for melee enemies.")]
     public float range = 0f;
+
+    [Header("Affects spawned bullets only.")]
+    public float bulletSpeed = 0.05f;
+    public float bulletSize = 1f;
 }
 
 public enum AttackPriorityOptions
