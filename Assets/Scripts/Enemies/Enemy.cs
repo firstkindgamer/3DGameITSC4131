@@ -81,6 +81,7 @@ public class Enemy : MonoBehaviour
         Destroy(transform.Find("Cube").gameObject);
         animator = visibleObject.GetComponent<Animator>();
         animator.SetBool("isRanged", isRanged);
+        animator.SetFloat("attackSpeed", enemyBehaviors.attackRate / (isRanged ? 2.3f : 1.5f)); //these are the lengths of the attack clips to get them to be 1/sec
 
         if (!isFlying)
             visibleObject.transform.localPosition = new Vector3(0, 0, 0); //this has to be here or it will go off its rails

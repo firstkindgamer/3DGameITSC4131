@@ -19,4 +19,5 @@ MonoBehaviour:
     value: 1
   traversableGraphIndex: 0
   speed: 3
+  attackRate: 3
   range: 0

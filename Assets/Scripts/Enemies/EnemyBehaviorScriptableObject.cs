@@ -24,6 +24,8 @@ public class EnemyBehaviorScriptableObject : ScriptableObject
 
     public float speed = 1f;
 
+    public float attackRate = 5f;
+
     [Header("Set to 0 for melee enemies.")]
     public float range = 0f;
 }
