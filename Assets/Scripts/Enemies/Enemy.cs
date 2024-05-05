@@ -23,9 +23,27 @@ public class Enemy : MonoBehaviour
                 possibleTargets.RemoveAt(i);
         }
         possibleTargets.Sort(SortByPriority);
-        print(possibleTargets.Count);
-        while (possibleTargets.Count < 2) possibleTargets.Add(null);
-        return new Tuple<EnemyTargeting, EnemyTargeting>(possibleTargets[0], possibleTargets[1]);
+
+        EnemyTargeting mainTarget;
+        if (possibleTargets.Count > 0)
+            mainTarget = possibleTargets[0];
+        else
+            mainTarget = null;
+
+        for (int i = possibleTargets.Count - 1; i >= 0; i--)
+        {
+            if (distanceToTarget(possibleTargets[i]) >= getShootingDistance(possibleTargets[i]))
+                possibleTargets.RemoveAt(i);
+        }
+        possibleTargets.Sort(SortByPriority);
+
+        EnemyTargeting secondaryTarget;
+        if (possibleTargets.Count > 0)
+            secondaryTarget = possibleTargets[0];
+        else
+            secondaryTarget = null;
+
+        return new Tuple<EnemyTargeting, EnemyTargeting>(mainTarget, secondaryTarget);
     }
     private int SortByPriority(EnemyTargeting t1, EnemyTargeting t2)
     {
@@ -152,15 +170,23 @@ public class Enemy : MonoBehaviour
         animator.SetBool("isMoving", distanceMovedSinceLastFrame > 0.01f); //this may need to be adjusted to insure the walk animation stops when standing still
         positionLastFrame = transform.position;
 
-        if (distanceToTarget(targets.Item1) < getShootingDistance(targets.Item1)
-            || distanceToTarget(targets.Item2) < getShootingDistance(targets.Item2))
+        if (targets.Item1 != null && (distanceToTarget(targets.Item1) < getShootingDistance(targets.Item1)))
         {
             animator.SetBool("isAttacking", true);
+            currentAttackingTarget = targets.Item1;
+        } else if (targets.Item2 != null && distanceToTarget(targets.Item2) < getShootingDistance(targets.Item2))
+        {
+            animator.SetBool("isAttacking", true);
+            currentAttackingTarget = targets.Item2;
         } else
         {
             animator.SetBool("isAttacking", false);
+            currentAttackingTarget = null;
         }
     }
+
+    EnemyTargeting currentAttackingTarget;
+
     public float distanceToTarget(EnemyTargeting enemy)
     {
         return Vector3.Distance(transform.position, enemy.gameObject.transform.position);
@@ -168,13 +194,13 @@ public class Enemy : MonoBehaviour
 
     public void fireBullet()
     {
+        if (currentAttackingTarget == null) return;
+
         EnemyBullet b = Instantiate(enemyBulletPrefab).GetComponent<EnemyBullet>();
         b.gameObject.transform.position = transform.position;
         b.enemyBehaviors = enemyBehaviors;
-        if (distanceToTarget(targets.Item1) <= distanceToTarget(targets.Item2))
-            b.target = targets.Item1.transform;
-        else
-            b.target = targets.Item2.transform;
+
+        b.target = currentAttackingTarget.gameObject.transform;
     }
 
     private Vector3 positionLastFrame;
