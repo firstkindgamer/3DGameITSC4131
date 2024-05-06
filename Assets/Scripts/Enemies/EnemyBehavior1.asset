@@ -21,5 +21,6 @@ MonoBehaviour:
   speed: 2
   attackRate: 0.1
   range: 20
-  bulletSpeed: 0.05
+  bulletSpeed: 5
   bulletSize: 1
+  damage: 1

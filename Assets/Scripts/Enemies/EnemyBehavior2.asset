@@ -20,4 +20,7 @@ MonoBehaviour:
   traversableGraphIndex: 0
   speed: 3
   attackRate: 3
-  range: 0
+  range: 3
+  bulletSpeed: 5
+  bulletSize: 1
+  damage: 1

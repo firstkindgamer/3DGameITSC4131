@@ -32,6 +32,7 @@ public class EnemyBehaviorScriptableObject : ScriptableObject
     [Header("Affects spawned bullets only.")]
     public float bulletSpeed = 0.05f;
     public float bulletSize = 1f;
+    public float damage = 1f;
 }
 
 public enum AttackPriorityOptions

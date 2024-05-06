@@ -9,6 +9,7 @@ public abstract class EnemyTargeting : MonoBehaviour
 {
     public abstract AttackPriorityOptions type();
     public float additionalStoppingRadius() { return 1f; } //should be the radius of whatever it is
+    public float health = 5f;
 }
 
 public class Enemy : MonoBehaviour
@@ -212,13 +213,22 @@ public class Enemy : MonoBehaviour
     {
         if (currentAttackingTarget == null) return;
 
-        EnemyBullet b = Instantiate(enemyBulletPrefab).GetComponent<EnemyBullet>();
-        b.gameObject.transform.position = firePoint.position;
-        b.enemyBehaviors = enemyBehaviors;
+        if (isRanged)
+        {
+            EnemyBullet b = Instantiate(enemyBulletPrefab).GetComponent<EnemyBullet>();
+            b.gameObject.transform.position = firePoint.position;
+            b.enemyBehaviors = enemyBehaviors;
+            b.maxTravelDistance = getShootingDistance(currentAttackingTarget);
 
-        //use getShootingDistance for this bullet's range, NOT from enemyBehaviors, as flying enemies need a boost
+            //use getShootingDistance for this bullet's range, NOT from enemyBehaviors, as flying enemies need a boost
 
-        b.target = currentAttackingTarget.gameObject.transform;
+            //b.target = currentAttackingTarget.gameObject.transform.position;
+            b.direction = (currentAttackingTarget.transform.position - firePoint.position).normalized;
+            b.startingPoint = firePoint.position;
+        } else
+        {
+            currentAttackingTarget.health -= enemyBehaviors.damage;
+        }
     }
 
     private Vector3 positionLastFrame;
@@ -236,12 +246,15 @@ public class Enemy : MonoBehaviour
     private float getShootingDistance(EnemyTargeting targ)
     {
         //use pythagorean theorem here with fly height for flying enemies, they should shoot a bit further
-        if (isFlying)
-        {
-            float groundStoppingDistance = getStoppingDistance(targ);
-            return Mathf.Sqrt(Mathf.Pow(groundStoppingDistance, 2) + Mathf.Pow(FLIGHT_HEIGHT, 2)) + ATTACK_BUFFER_ROOM;
-        } else
-            return getStoppingDistance(targ) + ATTACK_BUFFER_ROOM;
+        //if (isFlying)
+        //{
+        //    float groundStoppingDistance = getStoppingDistance(targ);
+        //    return Mathf.Sqrt(Mathf.Pow(groundStoppingDistance, 2) + Mathf.Pow(FLIGHT_HEIGHT, 2)) + ATTACK_BUFFER_ROOM;
+        //} else
+        //    return getStoppingDistance(targ) + ATTACK_BUFFER_ROOM;
+
+        float groundStoppingDistance = getStoppingDistance(targ);
+        return Mathf.Sqrt(Mathf.Pow(groundStoppingDistance, 2) + Mathf.Pow(target.transform.localPosition.y, 2)) + ATTACK_BUFFER_ROOM;
     }
 
     public bool checkIfFlying()
