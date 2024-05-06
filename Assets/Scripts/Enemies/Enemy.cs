@@ -139,6 +139,10 @@ public class Enemy : MonoBehaviour
         {
             InvokeRepeating("fireBullet", 0, enemyBehaviors.attackRate); //no animator attack, so do this
         }
+        if(isFlying)
+        {
+            this.tag = "Air";
+        } else this.tag = "Ground";
     }
 
     public GameObject GetChildGameObject(GameObject fromGameObject, string withName)
