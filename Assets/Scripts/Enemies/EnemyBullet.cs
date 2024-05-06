@@ -23,4 +23,13 @@ public class EnemyBullet : MonoBehaviour
         if (Vector3.Distance(transform.position, startingPoint) > maxTravelDistance)
             Destroy(this.gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "EnemyTargeting")
+        {
+            EnemyTargeting hit = other.transform.parent.GetComponent<EnemyTargeting>();
+            hit.changeHealth(-1);
+        }
+    }
 }

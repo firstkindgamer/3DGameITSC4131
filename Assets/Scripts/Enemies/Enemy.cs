@@ -10,6 +10,11 @@ public abstract class EnemyTargeting : MonoBehaviour
     public abstract AttackPriorityOptions type();
     public float additionalStoppingRadius() { return 1f; } //should be the radius of whatever it is
     public float health = 5f;
+    public void changeHealth(float amount)
+    {
+        health -= amount;
+        print("health reduced");
+    }
 }
 
 public class Enemy : MonoBehaviour
