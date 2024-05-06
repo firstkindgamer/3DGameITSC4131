@@ -217,7 +217,7 @@ MonoBehaviour:
   cameraRotatorDummy: {fileID: 5619097108685679929}
   ableToMakeADoubleJump: 1
   meshTransform: {fileID: 3101933379318714754}
-  animator: {fileID: 0}
+  animator: {fileID: 5609221445500797670}
 --- !u!114 &3931429493659704342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,5 +548,10 @@ PrefabInstance:
 --- !u!4 &2457168569320184678 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3029999871330056898, guid: 2bc2977404bd800409c4e8e24d80218b, type: 3}
+  m_PrefabInstance: {fileID: 582412545639244196}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5609221445500797670 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5026809040053396290, guid: 2bc2977404bd800409c4e8e24d80218b, type: 3}
   m_PrefabInstance: {fileID: 582412545639244196}
   m_PrefabAsset: {fileID: 0}
