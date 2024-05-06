@@ -65,7 +65,7 @@ public class Projectile : MonoBehaviour
             {
                 TakeDamage(target, damage);
                 cleaveTargets.Remove(target);
-                try{
+                try{ //This doesn't work
                     if(isFreeze)  
                     {
                         StartCoroutine(fTower.Freeze());
