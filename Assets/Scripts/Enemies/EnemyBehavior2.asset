@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visibleObjectPrefab: {fileID: 3829473786789921330, guid: 3ebe03b6013914326b4dfc57a7bb22a2, type: 3}
   stopsForTowers: 0
-  attackPriority: 010000000000000002000000
+  attackPriority: 000000000100000002000000
   traversableGraphs:
     value: 1
   traversableGraphIndex: 0

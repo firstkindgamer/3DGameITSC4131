@@ -9,11 +9,13 @@ public abstract class EnemyTargeting : MonoBehaviour
 {
     public abstract AttackPriorityOptions type();
     public float additionalStoppingRadius() { return 1f; } //should be the radius of whatever it is
+    public float maxHealth = 5f;
     public float health = 5f;
     public void changeHealth(float amount)
     {
         health -= amount;
         print("health reduced");
+        if(health <= 0) Destroy(gameObject);
     }
 }
 
@@ -119,6 +121,7 @@ public class Enemy : MonoBehaviour
         setupParms();
 
         visibleObject = Instantiate(enemyBehaviors.visibleObjectPrefab, this.transform);
+        visibleObject.transform.localScale = new Vector3(radius, radius, radius);
         Destroy(transform.Find("Cube").gameObject);
         animator = visibleObject.GetComponent<Animator>();
         animator.SetBool("isRanged", isRanged);
@@ -148,7 +151,11 @@ public class Enemy : MonoBehaviour
         {
             this.tag = "Air";
         } else this.tag = "Ground";
+
+        distanceBetweenTargetAndBaseTransform = Vector3.Distance(target.transform.position, transform.position);
     }
+
+    float distanceBetweenTargetAndBaseTransform;
 
     public GameObject GetChildGameObject(GameObject fromGameObject, string withName)
     {
@@ -256,7 +263,7 @@ public class Enemy : MonoBehaviour
     {
         return radius + targ.additionalStoppingRadius() + enemyBehaviors.range;
     }
-    private static float ATTACK_BUFFER_ROOM = 1f; //1f for buffer room to attack
+    private static float ATTACK_BUFFER_ROOM = 2f; //2f for buffer room to attack
     private float getShootingDistance(EnemyTargeting targ)
     {
         //use pythagorean theorem here with fly height for flying enemies, they should shoot a bit further
@@ -268,7 +275,7 @@ public class Enemy : MonoBehaviour
         //    return getStoppingDistance(targ) + ATTACK_BUFFER_ROOM;
 
         float groundStoppingDistance = getStoppingDistance(targ);
-        return Mathf.Sqrt(Mathf.Pow(groundStoppingDistance, 2) + Mathf.Pow(target.transform.localPosition.y, 2)) + ATTACK_BUFFER_ROOM;
+        return Mathf.Sqrt(Mathf.Pow(groundStoppingDistance, 2) + Mathf.Pow(distanceBetweenTargetAndBaseTransform, 2)) + ATTACK_BUFFER_ROOM; //distanceBetweenTargetAndBaseTransform used to be target.transform.localPosition.y
     }
 
     public bool checkIfFlying()

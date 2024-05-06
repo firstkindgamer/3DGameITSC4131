@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
     public static Projectile projectile;
     void Awake() => projectile = this;
     private GameObject target;
-    private int damage;
+    private float damage;
     private float moveSpeed;
     private bool isCleave;
     public int cleaveNumber = 2;
@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
     public GameObject hitSpawnPrefab;
 
     
-    public void Initialize(GameObject target, int damage, float moveSpeed, bool cleave, List<GameObject> game, bool freeze)
+    public void Initialize(GameObject target, float damage, float moveSpeed, bool cleave, List<GameObject> game, bool freeze)
     {
         this.target = target;
         this.damage = damage;
@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
         if(target != null && !isCleave)
         {
 
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target.GetComponent<Enemy>().target.transform.position, moveSpeed * Time.deltaTime);
             transform.LookAt(target.transform);
             if(Vector3.Distance(transform.position, target.transform.position) < 0.2f)
             {
@@ -97,7 +97,7 @@ public class Projectile : MonoBehaviour
     
     }
 
-    void TakeDamage(GameObject target, int damage)
+    void TakeDamage(GameObject target, float damage)
     {
         try
         {
