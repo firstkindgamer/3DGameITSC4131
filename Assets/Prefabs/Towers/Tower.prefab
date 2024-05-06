@@ -121,6 +121,59 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1809245313035347614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2805380878284219074}
+  - component: {fileID: 3154628038495864940}
+  m_Layer: 6
+  m_Name: GroundCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2805380878284219074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809245313035347614}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1945517619709642929}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3154628038495864940
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809245313035347614}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.74, y: 8.31, z: 6.45}
+  m_Center: {x: 0, y: 1.22, z: -0.18}
 --- !u!1 &1827526611856858880
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +185,7 @@ GameObject:
   - component: {fileID: 5922645568372149443}
   - component: {fileID: 3284146296480009733}
   - component: {fileID: 5315907459675046724}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Tower_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,7 +464,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7474859319844226889}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,6 +569,59 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5952277879110599849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6408492065297911210}
+  - component: {fileID: 1558592626312434262}
+  m_Layer: 0
+  m_Name: EnemyTargetingCollider
+  m_TagString: EnemyTargeting
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6408492065297911210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5952277879110599849}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1945517619709642929}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1558592626312434262
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5952277879110599849}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.74, y: 8.31, z: 6.45}
+  m_Center: {x: 0, y: 1.22, z: -0.18}
 --- !u!1 &6075629042700832843
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,11 +852,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1945517619709642929}
-  - component: {fileID: 6155258936149036339}
   - component: {fileID: 1279627125533343646}
   - component: {fileID: 5603921530965533615}
   - component: {fileID: -3048478587234609638}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,35 +871,16 @@ Transform:
   m_GameObject: {fileID: 8129217655087637784}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8198463, y: -0.00000047683716, z: -0.6790714}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5229068723943667933}
   - {fileID: 5922645568372149443}
+  - {fileID: 6408492065297911210}
+  - {fileID: 2805380878284219074}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6155258936149036339
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8129217655087637784}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 6.74, y: 8.31, z: 6.45}
-  m_Center: {x: 0, y: 1.22, z: -0.18}
 --- !u!114 &1279627125533343646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,7 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1073741824
-  uniqueID: 45177365591164468
+  uniqueID: 8021553137612370520
   updateError: 1
   checkTime: 0.2
 --- !u!135 &5603921530965533615
@@ -844,8 +930,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cafd276a3283d9842af9296e02c82974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 5
   towerScriptableObject: {fileID: 11400000, guid: a8b69c612a86011459b81422dc171bfa, type: 2}
   targetPriority: 0
+  targetStyle: 0
   firePoint: {fileID: 7474859319844226889}
   partToRotate: {fileID: 3493708067226416420}
 --- !u!1 &8642169991098849117
