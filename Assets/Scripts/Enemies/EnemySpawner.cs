@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public EnemyBehaviorScriptableObject walkingEnemyBehaviors;
-    public EnemyBehaviorScriptableObject flyingEnemyBehaviors;
+    public EnemyBehaviorScriptableObject[] enemyBehaviors;
 
     public GameObject enemyPrefab;
 
@@ -13,31 +12,19 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(spawnFlying());
-
-        StartCoroutine(spawnWalking());
     }
 
     IEnumerator spawnFlying()
     {
+        int index = 0;
         while (true)
         {
-            yield return new WaitForSeconds(10f + Random.value * 10);
+            yield return new WaitForSeconds(3f + Random.value * 4);
             Enemy newEnemy = Instantiate(enemyPrefab).GetComponent<Enemy>();
-            newEnemy.enemyBehaviors = flyingEnemyBehaviors;
+            newEnemy.enemyBehaviors = enemyBehaviors[index];
             newEnemy.transform.position = transform.position;
             newEnemy.Init();
-        }
-    }
-
-    IEnumerator spawnWalking()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(5f + Random.value * 5);
-            Enemy newEnemy = Instantiate(enemyPrefab).GetComponent<Enemy>();
-            newEnemy.enemyBehaviors = walkingEnemyBehaviors;
-            newEnemy.transform.position = transform.position;
-            newEnemy.Init();
+            index = (index + 1) % enemyBehaviors.Length;
         }
     }
 }
