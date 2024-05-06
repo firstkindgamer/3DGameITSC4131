@@ -30,6 +30,7 @@ public class EnemyBullet : MonoBehaviour
         {
             EnemyTargeting hit = other.transform.parent.GetComponent<EnemyTargeting>();
             hit.changeHealth(-1);
+            other.GetComponent<FloatingHealthbar>().UpdateHealthBar(other.GetComponent<Tower>().health, other.GetComponent<Tower>().maxHealth);
             Destroy(this.gameObject);
         }
     }

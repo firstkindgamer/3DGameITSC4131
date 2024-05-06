@@ -44,7 +44,7 @@ public class Projectile : MonoBehaviour
         if(target != null && !isCleave)
         {
 
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target.GetComponent<Enemy>().target.transform.position, moveSpeed * Time.deltaTime);
             transform.LookAt(target.transform);
             if(Vector3.Distance(transform.position, target.transform.position) < 0.2f)
             {
