@@ -20,6 +20,7 @@ public class PlayerController : EnemyTargeting
     Quaternion nonzeroWalkRotation;
     public Transform cameraRotator;
     public Transform cameraRotatorDummy;
+    public CameraMovement cameraMovement;
 
     public bool ableToMakeADoubleJump = true;
 
@@ -34,9 +35,14 @@ public class PlayerController : EnemyTargeting
         return cameraRotatorDummy;
     }
 
+    private Vector3 oldPosition;
+
     // Start is called before the first frame update
     void Start()
     {
+        oldPosition = transform.position;
+        cameraMovement = GetComponentInChildren<CameraMovement>();
+
         GlobalScript.health = 100;
         GlobalScript.maxHealth = 100;
     }
@@ -110,6 +116,10 @@ public class PlayerController : EnemyTargeting
             new Vector3(groundCheck.position.x, groundCheck.position.y - 0.09f, groundCheck.position.z), 0.5f, groundLayer);
 
         animator.SetBool("Grounded", isGrounded);
+
+        if (transform.position != oldPosition)
+            cameraMovement.ExitTowerSelect();
+        oldPosition = transform.position;
     }
 
     public void Build()

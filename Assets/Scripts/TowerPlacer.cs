@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using TMPro;
 
 public class TowerPlacer : MonoBehaviour
 {
     CameraMovement cameraMovement;
     Camera camera;
     public LayerMask groundLayer;
+    public Tower selectedTower;
 
     MeshRenderer meshRenderer;
     public GameObject towerToPlace;
@@ -49,16 +52,31 @@ public class TowerPlacer : MonoBehaviour
                 //print(hit.collider.gameObject.name);
             }
 
+            RaycastHit capsuleHit = findHighestSurface(transform.position.x, transform.position.z);
+            if (capsuleHit.collider.gameObject.name == "GroundCollider")
+            {
+                //meshRenderer.enabled = false;
+                transform.localScale = new Vector3(1.443531f, 0f, 1.443531f);
+            }
+            else
+            {
+                //meshRenderer.enabled = true;
+                transform.localScale = new Vector3(2.887062f, 0, 2.887062f);
+            }
+
             if (Input.GetMouseButtonDown(0))
             {
                 //optionsPos.position = camera.WorldToScreenPoint(hit.point);
 
-                RaycastHit capsuleHit = findHighestSurface(transform.position.x, transform.position.z);
-
                 if (capsuleHit.collider.gameObject.name == "GroundCollider")
                 {
                     cameraMovement.mouseMode = MouseMode.TowerSelect;
-                    optionsPos.position = camera.WorldToScreenPoint(capsuleHit.collider.transform.position);
+
+                    selectedTower = capsuleHit.collider.gameObject.transform.parent.GetComponent<Tower>();
+
+                    Vector3 screenPoint = camera.WorldToScreenPoint(capsuleHit.collider.transform.position);
+                    optionsPos.position = screenPoint;
+                    Mouse.current.WarpCursorPosition(screenPoint);
 
                 } else
                 {
@@ -71,5 +89,39 @@ public class TowerPlacer : MonoBehaviour
         {
             meshRenderer.enabled = false;
         }
+    }
+
+    public TMP_Text upgradeText;
+    public TMP_Text salvageText;
+    public TMP_Text toggleText;
+    public TMP_Text groundAirText;
+
+    public void Upgrade()
+    {
+        selectedTower.Upgrade();
+        upgradeText.text = selectedTower.UpgradeText();
+    }
+    public void Salvage()
+    {
+        selectedTower.Salvage();
+        salvageText.text = selectedTower.SalvageText();
+    }
+    public void Toggle()
+    {
+        selectedTower.Toggle();
+        toggleText.text = selectedTower.ToggleText();
+    }
+    public void GroundAir()
+    {
+        selectedTower.GroundAir();
+        groundAirText.text = selectedTower.GroundAirText();
+    }
+
+    public void SetAllText()
+    {
+        upgradeText.text = selectedTower.UpgradeText();
+        salvageText.text = selectedTower.SalvageText();
+        toggleText.text = selectedTower.ToggleText();
+        groundAirText.text = selectedTower.GroundAirText();
     }
 }

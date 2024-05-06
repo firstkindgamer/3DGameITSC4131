@@ -11,6 +11,44 @@ public class Tower : EnemyTargeting
         return AttackPriorityOptions.Tower;
     }
 
+    // TOWER OPTIONS STUFF
+
+    public void Upgrade()
+    {
+
+    }
+    public void Salvage()
+    {
+
+    }
+    public void Toggle()
+    {
+
+    }
+    public void GroundAir()
+    {
+
+    }
+
+    public string UpgradeText()
+    {
+        return "Upgrade";
+    }
+    public string SalvageText()
+    {
+        return "Salvage";
+    }
+    public string ToggleText()
+    {
+        return "Toggle";
+    }
+    public string GroundAirText()
+    {
+        return "Ground/Air";
+    }
+
+    //////////////////////
+
     public static Tower tower;
     private void Awake() 
     {

@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
     public static Projectile projectile;
     void Awake() => projectile = this;
     private GameObject target;
-    private float damage;
+    private int damage;
     private float moveSpeed;
     private bool isCleave;
     public int cleaveNumber = 2;
@@ -24,13 +24,14 @@ public class Projectile : MonoBehaviour
     public GameObject hitSpawnPrefab;
 
     
-    public void Initialize(GameObject target, float damage, float moveSpeed, bool cleave, List<GameObject> game, bool freeze)
+    public void Initialize(GameObject target, int damage, float moveSpeed, bool cleave, List<GameObject> game, bool freeze)
     {
         this.target = target;
         this.damage = damage;
         this.moveSpeed = moveSpeed;
         this.isCleave = cleave;
         this.isFreeze = freeze;
+        print (this.isFreeze);
 
         for(int i = 0; i < game.Count; i++) //initilizing it like the others links the lists somehow????
         {
@@ -65,14 +66,11 @@ public class Projectile : MonoBehaviour
             {
                 TakeDamage(target, damage);
                 cleaveTargets.Remove(target);
-                try{ //This doesn't work
-                    if(isFreeze)  
-                    {
-                        StartCoroutine(fTower.Freeze());
-                    }
-                }catch(Exception ex2)
+
+                if(isFreeze)  
                 {
-                    Debug.Log("Enemy Movement is not properly configured!");
+                    print("Is freeze!");
+                    StartCoroutine(fTower.Freeze());
                 }
                 
                 if(hitSpawnPrefab != null)
@@ -99,7 +97,7 @@ public class Projectile : MonoBehaviour
     
     }
 
-    void TakeDamage(GameObject target, float damage)
+    void TakeDamage(GameObject target, int damage)
     {
         try
         {

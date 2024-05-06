@@ -37,6 +37,12 @@ public class CameraMovement : MonoBehaviour
 
     MouseMode oldMouseMode = MouseMode.Camera;
 
+    public void ExitTowerSelect()
+    {
+        if (mouseMode == MouseMode.TowerSelect)
+            mouseMode = MouseMode.Camera;
+    }
+
     void Update()
     {
         if (mouseMode == MouseMode.Camera)
@@ -76,6 +82,9 @@ public class CameraMovement : MonoBehaviour
 
         }
 
+        if (mouseMode == MouseMode.TowerSelect && Input.GetKeyDown("left shift"))
+            mouseMode = MouseMode.TowerPlace;
+
         //still need if click outside gui or player move and on tower select then go into camera mode
         //make towerplacer hide mesh when hovering over existing tower
 
@@ -84,7 +93,7 @@ public class CameraMovement : MonoBehaviour
             switch (mouseMode)
             {
                 case MouseMode.TowerSelect:
-                    Mouse.current.WarpCursorPosition(new Vector2(Screen.width / 2, Screen.height / 2)); //TODO: make this warp mouse to TowerSelectCanvas Options (or TowerPlacer.optionsPos). or world to screen point of the raycast hit
+                    //mouse warp done in TowerPlacer
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     towerSelectCanvas.SetActive(true);
