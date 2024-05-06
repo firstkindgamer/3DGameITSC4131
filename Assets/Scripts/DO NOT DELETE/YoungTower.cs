@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
-
+/*
 public class YoungTower : MonoBehaviour
 {
     public static YoungTower tower;
@@ -51,7 +51,7 @@ public class YoungTower : MonoBehaviour
         bulletCleave = towerScriptableObject.bulletCleave;
         angleOffset = towerScriptableObject.angleOffset;
         rotateTowardsTarget = towerScriptableObject.rotateTowardsTarget;
-        */
+        
 
         SphereCollider myCollider = GetComponent<SphereCollider>();
         myCollider.radius = range;
@@ -174,4 +174,6 @@ public class YoungTower : MonoBehaviour
             curEnemiesInRange.Remove(other.gameObject);
         }
     }
+    
 }
+ */

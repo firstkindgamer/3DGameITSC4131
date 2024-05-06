@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - Bullet
   - EnemyTargeting
+  - EnemyAir
+  - Ground
+  - Air
   layers:
   - Default
   - TransparentFX

@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
 
     private Seeker seeker;
     public AIDestinationSetter goalDest;
-    private FollowerEntity followerEntity;
+    public FollowerEntity followerEntity;
     public RecastGraph myRecastGraph;
 
     public bool isFlying;
@@ -96,6 +96,11 @@ public class Enemy : MonoBehaviour
 
     private GameObject visibleObject;
     private Animator animator;
+    public static Enemy enemy; //Hi max dont mind me
+    public void Awake()
+    {
+        enemy = this;
+    }
 
     // Start is called before the first frame update
     public void Init()

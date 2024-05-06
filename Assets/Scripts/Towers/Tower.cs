@@ -20,12 +20,14 @@ public class Tower : EnemyTargeting
     [SerializeField]
     public TowerScriptableObject towerScriptableObject;
     public enum TowerTargetPriority{First, Last, Strongest, Weakest}
+    public enum TowerTargetStyle{Ground, Air}
 
 
     protected List<GameObject> curEnemiesInRange = new List<GameObject>();
     protected GameObject curEnemy;
     private float fireCountdown;
     public TowerTargetPriority targetPriority;
+    public TowerTargetStyle targetStyle;
     public Transform firePoint;
     public Transform partToRotate; 
 
@@ -136,24 +138,43 @@ public class Tower : EnemyTargeting
         }
         //Get the bullet ready to fire
         GameObject proj = Instantiate(towerScriptableObject.projectilePrefab, firePoint.position, Quaternion.identity);
-        proj.GetComponent<Projectile>().Initialize(curEnemy, towerScriptableObject.projectileDamage, towerScriptableObject.projectileSpeed, towerScriptableObject.bulletCleave, curEnemiesInRange);
+        proj.GetComponent<Projectile>().Initialize(curEnemy, towerScriptableObject.projectileDamage, towerScriptableObject.projectileSpeed, towerScriptableObject.bulletCleave, curEnemiesInRange, false);
         FindObjectOfType<AudioManager>().Play("bigShoot1");
     }
 
 
     private void OnTriggerEnter (Collider other) //Log enemies going in
     {
-        if(other.CompareTag("Enemy"))
+        if(targetStyle == TowerTargetStyle.Ground)
         {
-            curEnemiesInRange.Add(other.gameObject);
+            if(other.CompareTag("Ground"))
+            {
+                curEnemiesInRange.Add(other.gameObject);
+            }
+        }else if(targetStyle == TowerTargetStyle.Air)
+        {
+            if(other.CompareTag("Air"))
+            {
+                curEnemiesInRange.Add(other.gameObject);
+            }
         }
+        
     }
 
     private void OnTriggerExit (Collider other) //Log enemies going out
     {
-        if(other.CompareTag("Enemy"))
+        if(targetStyle == TowerTargetStyle.Ground)
         {
-            curEnemiesInRange.Remove(other.gameObject);
+            if(other.CompareTag("Ground"))
+            {
+                curEnemiesInRange.Add(other.gameObject);
+            }
+        }else if(targetStyle == TowerTargetStyle.Air)
+        {
+            if(other.CompareTag("Air"))
+            {
+                curEnemiesInRange.Add(other.gameObject);
+            }
         }
     }
 }
