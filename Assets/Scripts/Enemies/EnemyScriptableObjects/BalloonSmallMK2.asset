@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 310da3dd5d2e045f682eb27a7094fb64, type: 3}
-  m_Name: EnemyBehavior1
+  m_Name: BalloonSmallMK2
   m_EditorClassIdentifier: 
   visibleObjectPrefab: {fileID: 5143064221564113495, guid: 95bf2a1ade2ef4882a366b8162330452, type: 3}
-  stopsForTowers: 0
-  attackPriority: 000000000100000002000000
+  material: {fileID: 2100000, guid: 770fdd8855f1142898d2c64dd11ef0b5, type: 2}
+  attackPriority: 010000000200000000000000
   traversableGraphs:
     value: 2
   traversableGraphIndex: 1
-  speed: 2
-  attackRate: 0.1
-  range: 20
+  health: 100
+  speed: 4.5
+  attackRate: 2
+  range: 10
   bulletSpeed: 5
-  bulletSize: 1
-  damage: 1
+  bulletSize: 0.9
+  damage: 0.5

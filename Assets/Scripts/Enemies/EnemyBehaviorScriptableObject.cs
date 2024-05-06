@@ -7,8 +7,9 @@ using Pathfinding;
 public class EnemyBehaviorScriptableObject : ScriptableObject
 {
     public GameObject visibleObjectPrefab;
+    public Material material;
 
-    public bool stopsForTowers;
+    //public bool stopsForTowers;
 
     public List<AttackPriorityOptions> attackPriority;
 
@@ -21,6 +22,8 @@ public class EnemyBehaviorScriptableObject : ScriptableObject
 
     public GraphMask traversableGraphs;
     public int traversableGraphIndex = 0;
+
+    public float health = 100f;
 
     public float speed = 1f;
 

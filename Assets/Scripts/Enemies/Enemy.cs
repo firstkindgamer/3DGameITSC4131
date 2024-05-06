@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
     public float radius;
     public bool isRanged;
 
-    public float health = 10;
+    public float health;
 
     public EnemyBehaviorScriptableObject enemyBehaviors;
 
@@ -121,6 +121,13 @@ public class Enemy : MonoBehaviour
         visibleObject = Instantiate(enemyBehaviors.visibleObjectPrefab, this.transform);
         visibleObject.transform.localScale = new Vector3(radius, radius, radius);
         Destroy(transform.Find("Cube").gameObject);
+
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        foreach (Renderer ren in renderers)
+            ren.material = enemyBehaviors.material;
+
+        health = enemyBehaviors.health;
+
         animator = visibleObject.GetComponent<Animator>();
         animator.SetBool("isRanged", isRanged);
         animator.SetFloat("attackSpeed", enemyBehaviors.attackRate / (isRanged ? 2.3f : 1.5f)); //these are the lengths of the attack clips to get them to be 1/sec
