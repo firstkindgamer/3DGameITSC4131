@@ -22,11 +22,26 @@ public class Skill : MonoBehaviour
         GetComponent<Image>().color = skillTree.SkillLevels[id] >= skillTree.SkillCaps[id] ? Color.yellow 
         : skillTree.SkillPoints > 0 ? Color.green : Color.white;
 
-        foreach (var ConnectedSkill in ConnectedSkills)
-        {
-            skillTree.SkillList[ConnectedSkill].gameObject.SetActive(skillTree.SkillLevels[id] >= skillTree.SkillCaps[id]);
-            skillTree.ConnectorList[ConnectedSkill].SetActive(skillTree.SkillLevels[id] >= skillTree.SkillCaps[id]);
-        }
+        //Are you ready to read this shit storm?
+        skillTree.SkillList[1].gameObject.SetActive(skillTree.spentSkillPoints >= 3);
+        skillTree.SkillList[2].gameObject.SetActive(skillTree.spentSkillPoints >= 3);
+        skillTree.SkillList[3].gameObject.SetActive(skillTree.spentSkillPoints >= 3);
+
+        skillTree.SkillList[4].gameObject.SetActive(skillTree.spentSkillPoints >= 6);
+        skillTree.SkillList[5].gameObject.SetActive(skillTree.spentSkillPoints >= 6);
+
+        skillTree.SkillList[6].gameObject.SetActive(skillTree.spentSkillPoints >= 9);
+
+        skillTree.SkillList[7].gameObject.SetActive(skillTree.spentSkillPoints >= 12);
+        skillTree.SkillList[8].gameObject.SetActive(skillTree.spentSkillPoints >= 12);
+
+
+        // foreach (var ConnectedSkill in ConnectedSkills)
+        // {
+        //     //Reveal choices if required node was bought
+        //     skillTree.SkillList[ConnectedSkill].gameObject.SetActive(skillTree.SkillLevels[id] >= skillTree.SkillCaps[id]);
+        //     skillTree.ConnectorList[ConnectedSkill].SetActive(skillTree.SkillLevels[id] >= skillTree.SkillCaps[id]);
+        // }
     }
 
     public void Buy()
@@ -39,6 +54,7 @@ public class Skill : MonoBehaviour
         {
             FindObjectOfType<AudioManager>().Play("talentBuy");
             skillTree.SkillPoints -= 1;
+            skillTree.spentSkillPoints++;
             skillTree.SkillLevels[id]++;
             skillTree.UpdateAllSkillUi();
             skillTree.UpdatePlayerStats(id);
