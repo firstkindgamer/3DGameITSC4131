@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.21779048, g: 0.6937786, b: 0.8198426, a: 1}
+  m_IndirectSpecularColor: {r: 0.21746212, g: 0.69392985, b: 0.82013094, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -948,6 +948,70 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f71839299c9247044afba92eb1352c17, type: 3}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[7].name
+      value: PlayerDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0b97a06893f70d44d9655656fb630c56, type: 3}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[8].name
+      value: GroundDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2576c625df0c265458a875a3ff8b3b2f, type: 3}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[9].name
+      value: AirDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[7].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[8].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[9].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[7].sBlend
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[7].volume
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[8].sBlend
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[8].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[9].sBlend
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1252225037068900737, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
+      propertyPath: sounds.Array.data[9].volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8268678697893146804, guid: c28201ef539296d4b8cf9312d2691b2d, type: 3}
       propertyPath: m_Name
       value: AudioManager
@@ -8553,6 +8617,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4008251156198624341, guid: e329f97840ad33843a3af0b59cca4f82, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4008251156198624341, guid: e329f97840ad33843a3af0b59cca4f82, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5180084853093721470, guid: e329f97840ad33843a3af0b59cca4f82, type: 3}
       propertyPath: m_Name
       value: Freezethrower_Tower
@@ -8927,6 +8999,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1945517619709642929, guid: c1eaa820b283b984dacf4d96a5055441, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872959235128312512, guid: c1eaa820b283b984dacf4d96a5055441, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3872959235128312512, guid: c1eaa820b283b984dacf4d96a5055441, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8129217655087637784, guid: c1eaa820b283b984dacf4d96a5055441, type: 3}
@@ -13567,6 +13647,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5181341022370382410, guid: 99196195d22c6714aa1b15566264c6dc, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5181341022370382410, guid: 99196195d22c6714aa1b15566264c6dc, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5661301850526880861, guid: 99196195d22c6714aa1b15566264c6dc, type: 3}
       propertyPath: m_Name
       value: BrickTower
@@ -15053,6 +15141,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7303702722780378236, guid: e15097bba803a7d408b3668e774fb32b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303702722780378236, guid: e15097bba803a7d408b3668e774fb32b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8100993937094671221, guid: e15097bba803a7d408b3668e774fb32b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 108.82501
