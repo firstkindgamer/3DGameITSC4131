@@ -16,15 +16,14 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator spawnFlying()
     {
-        int index = 0;
         while (true)
         {
             yield return new WaitForSeconds(3f + Random.value * 4);
+            int index = UnityEngine.Random.Range(0, enemyBehaviors.Length - 1);
             Enemy newEnemy = Instantiate(enemyPrefab).GetComponent<Enemy>();
             newEnemy.enemyBehaviors = enemyBehaviors[index];
             newEnemy.transform.position = transform.position;
             newEnemy.Init();
-            index = (index + 1) % enemyBehaviors.Length;
         }
     }
 }

@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class UIScript : MonoBehaviour
 {
@@ -23,7 +24,8 @@ public class UIScript : MonoBehaviour
     public Image brickTowerImage;
     public Image gattlingTowerImage;
     public GameObject towerHolderUi;
-    TowerPlacer placer;
+    public TowerPlacer placer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,14 +33,6 @@ public class UIScript : MonoBehaviour
         originalHealth = healthBar.transform.localScale;
         clockTowerImage.GetComponent<Outline>().enabled = true;
 
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        print(GlobalScript.health);
-        healthBar.transform.localScale = new Vector3( (GlobalScript.health / 100), 1, 1);
 
     }
     
@@ -55,47 +49,45 @@ public class UIScript : MonoBehaviour
     
     
 
-    public void clickHandle(PointerEventData eventData)
+    public void Update()
     {
-        
-        if(eventData.selectedObject.name == "clockTower")
+        print(GlobalScript.health);
+        healthBar.transform.localScale = new Vector3((GlobalScript.health / 100), 1, 1);
+
+        if (Input.GetKeyDown("1"))
         {
-            tower = Instantiate(clockTower);
+            placer.towerToPlace = clockTower;
             clockTowerImage.GetComponent<Outline>().enabled = true;
             freezeTowerImage.GetComponent<Outline>().enabled = false;
             gattlingTowerImage.GetComponent<Outline>().enabled = false;
             brickTowerImage.GetComponent<Outline>().enabled = false;
 
 
-        } else if (eventData.selectedObject.name == "freezeTower") {
-            tower = Instantiate(freezeTower);
+        } else if (Input.GetKeyDown("2")) {
+            placer.towerToPlace = freezeTower;
             freezeTowerImage.GetComponent<Outline>().enabled = true;
             clockTowerImage.GetComponent <Outline>().enabled = false;
             gattlingTowerImage.GetComponent<Outline>().enabled = false;
             brickTowerImage.GetComponent<Outline>().enabled = false;
 
-        } else if (eventData.selectedObject.name == "brickTower")
+        } else if (Input.GetKeyDown("3"))
         {
-            tower = Instantiate(brickTower);
+            placer.towerToPlace = brickTower;
             brickTowerImage.GetComponent<Outline>().enabled = true;
             freezeTowerImage.GetComponent<Outline>().enabled = false;
             clockTowerImage.GetComponent<Outline>().enabled = false;
             gattlingTowerImage.GetComponent<Outline>().enabled = false;
             
 
-        } else if(eventData.selectedObject.name == "gattlingTower")
+        } else if(Input.GetKeyDown("4"))
         {
-            tower = Instantiate(gattlingTower);
+            placer.towerToPlace = gattlingTower;
             gattlingTowerImage.GetComponent<Outline>().enabled = true;
             freezeTowerImage.GetComponent<Outline>().enabled = false;
             clockTowerImage.GetComponent<Outline>().enabled = false;
             brickTowerImage.GetComponent<Outline>().enabled = false;
 
-        } else
-        {
-            return;
         }
-        placer.towerToPlace = tower;
 
     }
 }
