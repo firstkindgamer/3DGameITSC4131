@@ -428,6 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c3e4535d99949fbb40c626db620468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 5
   health: 5
   controller: {fileID: 8221144369291961521}
   direction: {x: 0, y: 0, z: 0}
@@ -441,6 +442,7 @@ MonoBehaviour:
     m_Bits: 64
   cameraRotator: {fileID: 4269790646927456739}
   cameraRotatorDummy: {fileID: 8137086730656333069}
+  cameraMovement: {fileID: 0}
   ableToMakeADoubleJump: 1
   meshTransform: {fileID: 4556581573206667545}
   animator: {fileID: 492075625633633450}
@@ -758,7 +760,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6853327173530892293}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 683fa5ad61be4468984e66c0a788673e, type: 3}
   m_Controller: {fileID: 9100000, guid: e97b90a21ade94b3db1a7f9b46dfd456, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
