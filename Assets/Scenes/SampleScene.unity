@@ -4972,7 +4972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &638169185
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6729,6 +6729,18 @@ PrefabInstance:
     - target: {fileID: 4717778486782982304, guid: cd102edc140bb6c43960db818a335915, type: 3}
       propertyPath: m_Name
       value: Skill
+      objectReference: {fileID: 0}
+    - target: {fileID: 5552837065823080707, guid: cd102edc140bb6c43960db818a335915, type: 3}
+      propertyPath: m_Text
+      value: '0/3
+
+        Unlock Towers'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133816048555562576, guid: cd102edc140bb6c43960db818a335915, type: 3}
+      propertyPath: m_Text
+      value: 'Unlock a new tower to play with
+
+'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9358,6 +9370,7 @@ MonoBehaviour:
   ConnectorList: []
   ConnectorHolder: {fileID: 84624131}
   SkillPoints: 0
+  spentSkillPoints: 0
 --- !u!4 &1089130799
 Transform:
   m_ObjectHideFlags: 0
@@ -10095,6 +10108,16 @@ PrefabInstance:
     - target: {fileID: 4717778486782982304, guid: cd102edc140bb6c43960db818a335915, type: 3}
       propertyPath: m_Name
       value: Skill (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5552837065823080707, guid: cd102edc140bb6c43960db818a335915, type: 3}
+      propertyPath: m_Text
+      value: '0/3
+
+        Unlock Towers'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133816048555562576, guid: cd102edc140bb6c43960db818a335915, type: 3}
+      propertyPath: m_Text
+      value: Unlock a new tower to play with
       objectReference: {fileID: 0}
     - target: {fileID: 8427968428947086024, guid: cd102edc140bb6c43960db818a335915, type: 3}
       propertyPath: m_RaycastTarget

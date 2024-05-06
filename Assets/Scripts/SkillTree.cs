@@ -27,6 +27,7 @@ public class SkillTree : MonoBehaviour
     public List<GameObject> ConnectorList;
     public GameObject ConnectorHolder;
     public int SkillPoints;
+    public int spentSkillPoints;
 
     public void Start()
     {
@@ -43,7 +44,7 @@ public class SkillTree : MonoBehaviour
         "BOING!", 
         "Strong Arm",
         "Drum Solo",
-        "We've Been Waiting for This",
+        "Kept you Waiting",
         "Temp Talent"};
 
         SkillDescriptions = new[]
@@ -62,14 +63,17 @@ public class SkillTree : MonoBehaviour
         foreach (var skill in SkillHolder.GetComponentsInChildren<Skill>()) SkillList.Add(skill);
         foreach (var connector in ConnectorHolder.GetComponentsInChildren<RectTransform>()) ConnectorList.Add(connector.gameObject);
 
-        for (var i = 0; i < SkillList.Count; i++) SkillList[i].id = i;
+        for (var i = 0; i < SkillList.Count; i++)
+        {
+            SkillList[i].id = i;
+            SkillList[i].gameObject.SetActive(false); 
+        } 
+        SkillList[0].gameObject.SetActive(true);
         
-        //SkillList[4].ConnectedSkills = new[] {7};
+        SkillList[4].ConnectedSkills = new[] {7};
         //SkillList[3].ConnectedSkills = new[] {4, 5};
 
         for(var i = 0; i < 9; i++) SkillLevels[i] = 0;
-
-        UpdateAllSkillUi();
     }
 
     public void UpdateAllSkillUi()
