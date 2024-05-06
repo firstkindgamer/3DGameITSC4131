@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 578968715}
   m_Layer: 0
   m_Name: Enemy (1)
-  m_TagString: Enemy
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -897,7 +897,7 @@ GameObject:
   - component: {fileID: 808351516}
   m_Layer: 0
   m_Name: Enemy (3)
-  m_TagString: Enemy
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2012,7 +2012,7 @@ GameObject:
   - component: {fileID: 1810666977}
   m_Layer: 0
   m_Name: Enemy (2)
-  m_TagString: Enemy
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2130,7 +2130,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1001 &2026411244
+--- !u!1001 &1976832796
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2144,15 +2144,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5523817870074068932, guid: e329f97840ad33843a3af0b59cca4f82, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.0407076
+      value: -0.6427815
       objectReference: {fileID: 0}
     - target: {fileID: 5523817870074068932, guid: e329f97840ad33843a3af0b59cca4f82, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.74999994
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5523817870074068932, guid: e329f97840ad33843a3af0b59cca4f82, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.54927063
+      value: -0.6008377
       objectReference: {fileID: 0}
     - target: {fileID: 5523817870074068932, guid: e329f97840ad33843a3af0b59cca4f82, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2617,5 +2617,5 @@ SceneRoots:
   - {fileID: 1615379742}
   - {fileID: 1563943765}
   - {fileID: 6208424128661980149}
-  - {fileID: 2026411244}
   - {fileID: 7787123993258565146}
+  - {fileID: 1976832796}

@@ -9,7 +9,7 @@ public class TowerScriptableObject : ScriptableObject
     [Header("Set Up Values")]
     public float baseRange = 35;
     public float baseAttackRate = 1;
-    public int baseProjectileDamage = 20;
+    public float baseProjectileDamage = 20;
     public float baseProjectileSpeed = 50;
     public bool baseBulletCleave = false;
     public GameObject projectilePrefab;
@@ -19,7 +19,7 @@ public class TowerScriptableObject : ScriptableObject
     [Header("Changed During Gameplay")]
     public float range = 35;
     public float attackRate = 1;
-    public int projectileDamage = 20;
+    public float projectileDamage = 20;
     public float projectileSpeed = 50;
     public bool bulletCleave = false;
 

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static Enemy;
+using System;
 
 public class FreezeTower : Tower
 {
     private Color ogColor;
     public static FreezeTower fTower;
-    private bool freeze = true;
     public void Awake()
     {
         fTower = this;
@@ -38,8 +38,7 @@ public class FreezeTower : Tower
         }
         yield return new WaitForSeconds(5); //wait 5 seconds
         enemy.followerEntity.maxSpeed = baseSpeed;
-        //curEnemy.GetComponent<Renderer>().material.SetColor("_ogColor", ogColor);
-        
+        //curEnemy.GetComponent<Renderer>().material.SetColor("_ogColor", ogColor);}}
     }
 
 }

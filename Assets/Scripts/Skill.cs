@@ -22,11 +22,13 @@ public class Skill : MonoBehaviour
         GetComponent<Image>().color = skillTree.SkillLevels[id] >= skillTree.SkillCaps[id] ? Color.yellow 
         : skillTree.SkillPoints > 0 ? Color.green : Color.white;
 
-        foreach (var ConnectedSkill in ConnectedSkills)
-        {
-            skillTree.SkillList[ConnectedSkill].gameObject.SetActive(skillTree.SkillLevels[id] >= skillTree.SkillCaps[id]);
-            skillTree.ConnectorList[ConnectedSkill].SetActive(skillTree.SkillLevels[id] >= skillTree.SkillCaps[id]);
-        }
+    
+        // foreach (var ConnectedSkill in ConnectedSkills)
+        // {
+        //     //Reveal choices if required node was bought
+        //     skillTree.SkillList[ConnectedSkill].gameObject.SetActive(skillTree.SkillLevels[id] >= skillTree.SkillCaps[id]);
+        //     skillTree.ConnectorList[ConnectedSkill].SetActive(skillTree.SkillLevels[id] >= skillTree.SkillCaps[id]);
+        // }
     }
 
     public void Buy()
