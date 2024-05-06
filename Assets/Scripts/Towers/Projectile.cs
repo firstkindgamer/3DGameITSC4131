@@ -6,6 +6,7 @@ using Mono.Cecil;
 using Unity.Entities.UniversalDelegates;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static FreezeTower;
 
 public class Projectile : MonoBehaviour
 {
@@ -16,18 +17,21 @@ public class Projectile : MonoBehaviour
     private float moveSpeed;
     private bool isCleave;
     public int cleaveNumber = 2;
+    private bool isFreeze;
     private List<GameObject> cleaveTargets = new List<GameObject>();
     
 
     public GameObject hitSpawnPrefab;
 
     
-    public void Initialize(GameObject target, int damage, float moveSpeed, bool cleave, List<GameObject> game)
+    public void Initialize(GameObject target, int damage, float moveSpeed, bool cleave, List<GameObject> game, bool freeze)
     {
         this.target = target;
         this.damage = damage;
         this.moveSpeed = moveSpeed;
         this.isCleave = cleave;
+        this.isFreeze = freeze;
+
         for(int i = 0; i < game.Count; i++) //initilizing it like the others links the lists somehow????
         {
             cleaveTargets.Add(game[i]);
@@ -49,6 +53,8 @@ public class Projectile : MonoBehaviour
                     GameObject effectIns = (GameObject)Instantiate(hitSpawnPrefab, transform.position, Quaternion.identity);
                     Destroy(effectIns, 2f);
                 }
+                if(isFreeze) StartCoroutine(fTower.Freeze());
+
                 Destroy(gameObject);
             }
         }else if(target != null && isCleave)
