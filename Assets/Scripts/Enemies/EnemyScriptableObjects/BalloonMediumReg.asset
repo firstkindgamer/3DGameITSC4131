@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310da3dd5d2e045f682eb27a7094fb64, type: 3}
+  m_Name: BalloonMediumReg
+  m_EditorClassIdentifier: 
+  visibleObjectPrefab: {fileID: 5143064221564113495, guid: 95bf2a1ade2ef4882a366b8162330452, type: 3}
+  material: {fileID: 2100000, guid: 6a711e78ad3f44df6b98e3e3f113e898, type: 2}
+  attackPriority: 020000000000000001000000
+  traversableGraphs:
+    value: 16
+  traversableGraphIndex: 4
+  health: 180
+  speed: 3.7
+  attackRate: 1.5
+  range: 15
+  bulletSpeed: 6
+  bulletSize: 1
+  damage: 1

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,7 +31,14 @@ public class EnemyBullet : MonoBehaviour
         {
             EnemyTargeting hit = other.transform.parent.GetComponent<EnemyTargeting>();
             hit.changeHealth(-1);
-            other.GetComponent<FloatingHealthbar>().UpdateHealthBar(other.GetComponent<Tower>().health, other.GetComponent<Tower>().maxHealth);
+            try
+            {
+                other.GetComponentInChildren<FloatingHealthbar>().UpdateHealthBar(other.GetComponent<Tower>().health, other.GetComponent<Tower>().maxHealth);
+            }catch(Exception ex2)
+            {
+                Debug.Log("No Floating Healthbar!");
+            }
+            
             Destroy(this.gameObject);
         }
     }
