@@ -7,7 +7,6 @@ public class FreezeTower : Tower
 {
     private Color ogColor;
     public static FreezeTower fTower;
-    private bool freeze = true;
     public void Awake()
     {
         fTower = this;
