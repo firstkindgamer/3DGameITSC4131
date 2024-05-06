@@ -9,6 +9,7 @@ using static GattlingTower;
 using static BrickTower;
 using static FreezeTower;
 using static Projectile;
+using UnityEditor.UI;
 
 public class SkillTree : MonoBehaviour
 {
@@ -31,18 +32,31 @@ public class SkillTree : MonoBehaviour
     {
         SkillPoints = 20;
 
-        SkillLevels = new int[6];
-        SkillCaps = new [] {1, 5, 5, 2, 10, 10};
+        SkillLevels = new int[9];
+        SkillCaps = new [] {3, 3, 3, 2, 2, 3, 3, 1, 2};
 
-        SkillNames = new[] {"Fire Rate Increase", "Upgrade 2", "Upgrade 3", "Upgrade 4", "Booster 5", "Booster 6"};
+        SkillNames = new[] 
+        {"Unlock Towers", 
+        "More Bricks", 
+        "Ice Cream Truck", 
+        "Ol' Reliable", 
+        "BOING!", 
+        "Strong Arm",
+        "Drum Solo",
+        "We've Been Waiting for This",
+        "Temp Talent"};
+
         SkillDescriptions = new[]
         {
-            "Increases tower fire rate",
-            "Does a cooler thing",
-            "Does a underwhelming thing",
-            "Does your mom",
-            "Is the meta talent",
-            "Corrupts your game",
+            "Unlock a new tower to play with",
+            "Increase Brick Tower Fire Rate",
+            "Increase Freeze Tower Fire Rate",
+            "Increase Basic Tower Fire Rate",
+            "Increases maximum bounce targets",
+            "Brick tower does more damage, flies faster",
+            "Increases ALL tower damage",
+            "Gattling bullets bounce to multiple targets",
+            "Increases Fire Rate"
         };
 
         foreach (var skill in SkillHolder.GetComponentsInChildren<Skill>()) SkillList.Add(skill);
@@ -50,10 +64,10 @@ public class SkillTree : MonoBehaviour
 
         for (var i = 0; i < SkillList.Count; i++) SkillList[i].id = i;
         
-        SkillList[0].ConnectedSkills = new[] {1, 2, 3};
-        SkillList[3].ConnectedSkills = new[] {4, 5};
+        //SkillList[4].ConnectedSkills = new[] {7};
+        //SkillList[3].ConnectedSkills = new[] {4, 5};
 
-        for(var i = 0; i < 6; i++) SkillLevels[i] = 0;
+        for(var i = 0; i < 9; i++) SkillLevels[i] = 0;
 
         UpdateAllSkillUi();
     }
@@ -65,13 +79,41 @@ public class SkillTree : MonoBehaviour
 
     public void UpdatePlayerStats(int talentID)
     {
-        switch(talentID)
+        switch(talentID) //update stats based on talent
         {
             case 0:
-            gTower.towerScriptableObject.attackRate -= .5f;
+            //temp
             break;
             case 1:
-            tower.towerScriptableObject.attackRate -= .3f;
+            bTower.towerScriptableObject.attackRate *= .9f; //this doesn't scale correctly
+            break;
+            case 2:
+            fTower.towerScriptableObject.attackRate *= .9f; //none of these scale correctly LMAO
+            break;
+            case 3:
+            tower.towerScriptableObject.attackRate *= .9f;
+            break;
+            case 4:
+            projectile.cleaveNumber++;
+            break;
+            case 5:
+            bTower.towerScriptableObject.projectileDamage *= 1.1f;
+            bTower.towerScriptableObject.projectileSpeed *= 1.2f;
+            break;
+            case 6:
+            bTower.towerScriptableObject.projectileDamage *= 1.03f;
+            tower.towerScriptableObject.projectileDamage *= 1.03f;
+            fTower.towerScriptableObject.projectileDamage *= 1.03f;
+            gTower.towerScriptableObject.projectileDamage *= 1.03f;
+            break;
+            case 7:
+            gTower.towerScriptableObject.bulletCleave = true;
+            break;
+            case 8:
+            bTower.towerScriptableObject.attackRate *= .97f;
+            tower.towerScriptableObject.attackRate *= .97f;
+            fTower.towerScriptableObject.attackRate *= .97f;
+            gTower.towerScriptableObject.attackRate *= .97f;
             break;
         }
     }
