@@ -31,6 +31,7 @@ public class Projectile : MonoBehaviour
         this.moveSpeed = moveSpeed;
         this.isCleave = cleave;
         this.isFreeze = freeze;
+        print (this.isFreeze);
 
         for(int i = 0; i < game.Count; i++) //initilizing it like the others links the lists somehow????
         {
@@ -53,7 +54,7 @@ public class Projectile : MonoBehaviour
                     GameObject effectIns = (GameObject)Instantiate(hitSpawnPrefab, transform.position, Quaternion.identity);
                     Destroy(effectIns, 2f);
                 }
-                if(isFreeze) StartCoroutine(fTower.Freeze());
+                
 
                 Destroy(gameObject);
             }
@@ -65,6 +66,12 @@ public class Projectile : MonoBehaviour
             {
                 TakeDamage(target, damage);
                 cleaveTargets.Remove(target);
+
+                if(isFreeze)  
+                {
+                    print("Is freeze!");
+                    StartCoroutine(fTower.Freeze());
+                }
                 
                 if(hitSpawnPrefab != null)
                 {

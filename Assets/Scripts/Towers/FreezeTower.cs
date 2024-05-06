@@ -22,23 +22,23 @@ public class FreezeTower : Tower
         }
         //Get the bullet ready to fire
         GameObject proj = Instantiate(towerScriptableObject.projectilePrefab, firePoint.position, Quaternion.identity);
-        proj.GetComponent<Projectile>().Initialize(curEnemy, towerScriptableObject.projectileDamage, towerScriptableObject.projectileSpeed, towerScriptableObject.bulletCleave, curEnemiesInRange, freeze);
+        proj.GetComponent<Projectile>().Initialize(curEnemy, towerScriptableObject.projectileDamage, towerScriptableObject.projectileSpeed, towerScriptableObject.bulletCleave, curEnemiesInRange, true);
         FindObjectOfType<AudioManager>().Play("FreezeTower"); //changed audio from Tower
     }
 
     public IEnumerator Freeze()
     {
-        ogColor = curEnemy.GetComponent<Renderer>().material.GetColor("_ogColor");
+        //TODO: Fix not changing Color
+        //ogColor = curEnemy.GetComponent<Renderer>().material.GetColor("_ogColor");
         float baseSpeed = enemy.followerEntity.maxSpeed;
         if(enemy.followerEntity.maxSpeed >= enemy.followerEntity.maxSpeed * .5) //prevent debuff from applying more than once
         {
             enemy.followerEntity.maxSpeed *= .5f; 
-            curEnemy.GetComponent<Renderer>().material.SetColor("_Color", Color.blue); //give the enemy a frozen apperance 
+            //curEnemy.GetComponent<Renderer>().material.SetColor("_Color", Color.blue); //give the enemy a frozen apperance 
         }
-
         yield return new WaitForSeconds(5); //wait 5 seconds
         enemy.followerEntity.maxSpeed = baseSpeed;
-        curEnemy.GetComponent<Renderer>().material.SetColor("_ogColor", ogColor);
+        //curEnemy.GetComponent<Renderer>().material.SetColor("_ogColor", ogColor);
         
     }
 
