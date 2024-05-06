@@ -18,7 +18,6 @@ public class FloatingHealthbar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.LookRotation(transform.position - camera.transform.position);
-        target.position = target.position + offset;
+        transform.LookAt(camera.transform);
     }
 }
