@@ -330,6 +330,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 279846500560301147, guid: f82c55f300cc18d439db89c6e4fc40ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 279846500560301147, guid: f82c55f300cc18d439db89c6e4fc40ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 279846500560301147, guid: f82c55f300cc18d439db89c6e4fc40ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1551773489566020842, guid: f82c55f300cc18d439db89c6e4fc40ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -805,7 +817,13 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  selectedTower: {fileID: 0}
   towerToPlace: {fileID: 7001349656639826777, guid: 54af702212dee4b0f8f7bde26d9c8b3a, type: 3}
+  optionsPos: {fileID: 0}
+  upgradeText: {fileID: 0}
+  salvageText: {fileID: 0}
+  toggleText: {fileID: 0}
+  groundAirText: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
