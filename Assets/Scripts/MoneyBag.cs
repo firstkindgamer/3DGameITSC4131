@@ -15,7 +15,7 @@ public class MoneyBag : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             other.GetComponent<PlayerController>().money += value;
-             FindObjectOfType<AudioManager>().Play("MoneyPickup");
+            FindObjectOfType<AudioManager>().Play("MoneyPickup");
         }
     }
 }

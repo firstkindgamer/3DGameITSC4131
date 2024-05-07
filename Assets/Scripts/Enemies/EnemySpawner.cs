@@ -11,8 +11,19 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(spawnFlying());
+        //StartCoroutine(spawnFlying());
     }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            Debug.Log("The Swarm is Coming");
+            StartCoroutine(spawnFlying());
+        }
+    }
+
+
 
     IEnumerator spawnFlying()
     {
