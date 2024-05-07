@@ -200,6 +200,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print("Enemy Health:" + health);
         //goalDest.target = GameObject.Find("Player").transform;
 
         targets = getPrimaryAndSecondaryTargets(); //could optimize by making an event only change when new tower created or destroyed
