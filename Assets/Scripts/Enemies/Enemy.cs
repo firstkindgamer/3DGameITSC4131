@@ -13,7 +13,7 @@ public abstract class EnemyTargeting : MonoBehaviour
     public float health = 5f;
     public void changeHealth(float amount)
     {
-        health -= amount;
+        health += amount;
         print("health reduced");
         if(health <= 0) //Die
         {
@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour
     public float radius;
     public bool isRanged;
 
-    public float health = 10;
+    public float health;
 
     public EnemyBehaviorScriptableObject enemyBehaviors;
 
@@ -120,6 +120,8 @@ public class Enemy : MonoBehaviour
         isFlying = checkIfFlying();
         radius = myRecastGraph.characterRadius;
         isRanged = enemyBehaviors.range != 0;
+
+        health = enemyBehaviors.health;
 
         setupParms();
 

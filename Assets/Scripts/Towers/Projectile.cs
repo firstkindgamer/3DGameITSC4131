@@ -100,9 +100,9 @@ public class Projectile : MonoBehaviour
     {
         // try
         // {
-            tgt.GetComponent<Enemy>().enemyBehaviors.health -= dmg;
-            print(tgt.GetComponent<Enemy>().enemyBehaviors.health);
-            if(tgt.GetComponent<Enemy>().enemyBehaviors.health <= 0)
+            tgt.GetComponent<Enemy>().health -= dmg;
+            print(tgt.GetComponent<Enemy>().health);
+            if(tgt.GetComponent<Enemy>().health <= 0)
             {
                 Destroy(tgt);
             }
