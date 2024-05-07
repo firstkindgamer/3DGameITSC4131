@@ -143,7 +143,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2cab074a198d3564d8d017ab6b7b05a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 75f5eaf24cf0942d7ae0c495c90da87d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -421,7 +421,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 18322ba83ad82f6448eb05445ca3d1dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 65c2eb50bbd5649bf92401b70f54a1be, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -526,7 +526,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a3cb459beab89b047a693ec9a6b68374, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58d730ceda2174bfbac9ec44ae3b4114, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -631,7 +631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 58c75a7157465154f895efca70904a30, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd2e45c5f895447499f2568d29afe586, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -797,3 +797,4 @@ MonoBehaviour:
   brickTowerImage: {fileID: 7362882813321896647}
   gattlingTowerImage: {fileID: 8548099351871501019}
   towerHolderUi: {fileID: 1393342220061861127}
+  placer: {fileID: 0}
