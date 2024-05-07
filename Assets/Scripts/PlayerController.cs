@@ -16,6 +16,7 @@ public class PlayerController : EnemyTargeting
     public bool isGrounded;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public int money;
 
     Quaternion nonzeroWalkRotation;
     public Transform cameraRotator;

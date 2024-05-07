@@ -8,7 +8,9 @@ public class EnemyBehaviorScriptableObject : ScriptableObject
 {
     public GameObject visibleObjectPrefab;
     public Material material;
-
+    
+    public int netWorth;
+    public GameObject drop;
     //public bool stopsForTowers;
 
     public List<AttackPriorityOptions> attackPriority;
@@ -36,7 +38,19 @@ public class EnemyBehaviorScriptableObject : ScriptableObject
     public float bulletSpeed = 0.05f;
     public float bulletSize = 1f;
     public float damage = 1f;
+
+    void dropMoney()
+{
+    return;
 }
+
+public int getNetWorth(){
+    return netWorth;
+}
+
+}
+
+
 
 public enum AttackPriorityOptions
 {
@@ -44,3 +58,4 @@ public enum AttackPriorityOptions
     Tower,
     Base
 }
+
