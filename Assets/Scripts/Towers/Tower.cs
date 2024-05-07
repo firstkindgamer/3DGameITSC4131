@@ -19,7 +19,7 @@ public class Tower : EnemyTargeting
     }
     public void Salvage()
     {
-
+        Destroy(gameObject);
     }
     public void Toggle()
     {

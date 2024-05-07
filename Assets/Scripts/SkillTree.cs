@@ -45,7 +45,7 @@ public class SkillTree : MonoBehaviour
         "Strong Arm",
         "Drum Solo",
         "Kept you Waiting",
-        "Temp Talent"};
+        "Speedy boy"};
 
         SkillDescriptions = new[]
         {
@@ -57,7 +57,7 @@ public class SkillTree : MonoBehaviour
             "Brick tower does more damage, flies faster",
             "Increases ALL tower damage",
             "Gattling bullets bounce to multiple targets",
-            "Increases Fire Rate"
+            "Improves your run speed"
         };
 
         foreach (var skill in SkillHolder.GetComponentsInChildren<Skill>()) SkillList.Add(skill);
