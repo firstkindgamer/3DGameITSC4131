@@ -33,7 +33,7 @@ public class EnemyBullet : MonoBehaviour
             hit.changeHealth(-1);
             try
             {
-                other.GetComponentInChildren<FloatingHealthbar>().UpdateHealthBar(other.GetComponent<Tower>().health, other.GetComponent<Tower>().maxHealth);
+                other.GetComponentInChildren<FloatingHealthbar>().UpdateHealthBar(other.GetComponent<Tower>().towerScriptableObject.health, other.GetComponent<Tower>().towerScriptableObject.maxHealth);
             }catch(Exception ex2)
             {
                 Debug.Log("No Floating Healthbar!");

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visibleObjectPrefab: {fileID: 3829473786789921330, guid: 3ebe03b6013914326b4dfc57a7bb22a2, type: 3}
   material: {fileID: 2100000, guid: e5efe6dd10ea14b1ba56a54db08816db, type: 2}
+  netWorth: 150
+  drop: {fileID: 725127987195459404, guid: 1cbb43a0cb076f340a06215e9a894dd4, type: 3}
   attackPriority: 000000000200000001000000
   traversableGraphs:
     value: 4

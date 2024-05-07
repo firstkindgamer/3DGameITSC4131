@@ -69,7 +69,6 @@ public class Projectile : MonoBehaviour
 
                 if(isFreeze)  
                 {
-                    print("Is freeze!");
                     StartCoroutine(fTower.Freeze());
                 }
                 
@@ -97,20 +96,21 @@ public class Projectile : MonoBehaviour
     
     }
 
-    void TakeDamage(GameObject target, float damage)
+    void TakeDamage(GameObject tgt, float dmg)
     {
-        try
-        {
-            target.GetComponent<Enemy>().health -= damage;
-            if(target.GetComponent<Enemy>().health <= 0)
+        // try
+        // {
+            tgt.GetComponent<Enemy>().enemyBehaviors.health -= dmg;
+            print(tgt.GetComponent<Enemy>().enemyBehaviors.health);
+            if(tgt.GetComponent<Enemy>().enemyBehaviors.health <= 0)
             {
-                Destroy(target);
+                Destroy(tgt);
             }
-        }catch (NullReferenceException ex1)
-        {
-            //This was clogging up Console
-            Debug.Log("The targets health is not properly configured!");
-        }
+        // }catch (NullReferenceException ex1)
+        // {
+        //     //This was clogging up Console
+        //     Debug.Log("The targets health is not properly configured!");
+        // }
     }
 
     GameObject findClosestEnemy()

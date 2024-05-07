@@ -15,7 +15,10 @@ public abstract class EnemyTargeting : MonoBehaviour
     {
         health -= amount;
         print("health reduced");
-        if(health <= 0) Destroy(gameObject);
+        if(health <= 0) //Die
+        {
+            Destroy(gameObject);
+        } 
     }
 }
 

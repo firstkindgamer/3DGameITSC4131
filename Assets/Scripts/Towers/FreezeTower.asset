@@ -19,9 +19,10 @@ MonoBehaviour:
   baseBulletCleave: 1
   projectilePrefab: {fileID: 6686707445058312324, guid: edc94e3256501a5429fff3f1fee99028, type: 3}
   angleOffset: 100
+  price: 200
   rotateTowardsTarget: 1
-  range: 35
-  attackRate: 1
-  projectileDamage: 20
+  range: 20
+  attackRate: 0.75
+  projectileDamage: 5
   projectileSpeed: 50
-  bulletCleave: 0
+  bulletCleave: 1

@@ -14,7 +14,9 @@ public class TowerScriptableObject : ScriptableObject
     public bool baseBulletCleave = false;
     public GameObject projectilePrefab;
     public float angleOffset = 100;
+    public int price;
     public bool rotateTowardsTarget = true;
+    public float maxHealth;
     
     [Header("Changed During Gameplay")]
     public float range = 35;
@@ -22,6 +24,7 @@ public class TowerScriptableObject : ScriptableObject
     public float projectileDamage = 20;
     public float projectileSpeed = 50;
     public bool bulletCleave = false;
+    public float health;
 
     public void resetStats()
     {
@@ -30,6 +33,7 @@ public class TowerScriptableObject : ScriptableObject
         projectileDamage = baseProjectileDamage;
         projectileSpeed = baseProjectileSpeed;
         bulletCleave = baseBulletCleave;
+        health = maxHealth;
     }
     
 }

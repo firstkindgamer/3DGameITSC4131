@@ -398,11 +398,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d8b3cec473828a40b6e8b62de4b46b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyScriptableObject: {fileID: 0}
   maxHealth: 5
   health: 5
+  dropPosition: {fileID: 0}
   towerScriptableObject: {fileID: 11400000, guid: 1cab7ad83d164d743b6cebe4aea6b21d, type: 2}
   targetPriority: 0
-  targetStyle: 0
+  targetStyle: 1
   firePoint: {fileID: 4389715380128091442}
   partToRotate: {fileID: 3587024776301576030}
 --- !u!4 &9172651085252199067 stripped

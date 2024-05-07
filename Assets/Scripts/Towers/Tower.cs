@@ -205,13 +205,13 @@ public class Tower : EnemyTargeting
         {
             if(other.CompareTag("Ground"))
             {
-                curEnemiesInRange.Add(other.gameObject);
+                curEnemiesInRange.Remove(other.gameObject);
             }
         }else if(targetStyle == TowerTargetStyle.Air)
         {
             if(other.CompareTag("Air"))
             {
-                curEnemiesInRange.Add(other.gameObject);
+                curEnemiesInRange.Remove(other.gameObject);
             }
         }
     }
