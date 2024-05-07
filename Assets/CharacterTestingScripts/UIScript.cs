@@ -29,8 +29,8 @@ public class UIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthPos = healthBar.transform.GetComponent<RectTransform>();
-        originalHealth = healthBar.transform.localScale;
+        //healthPos = healthBar.transform.GetComponent<RectTransform>();
+        //originalHealth = healthBar.transform.localScale;
         clockTowerImage.GetComponent<Outline>().enabled = true;
 
 
@@ -52,7 +52,7 @@ public class UIScript : MonoBehaviour
     public void Update()
     {
         print(GlobalScript.health);
-        healthBar.transform.localScale = new Vector3((GlobalScript.health / 100), 1, 1);
+        //healthBar.transform.localScale = new Vector3((GlobalScript.health / 100), 1, 1);
 
         if (Input.GetKeyDown("1"))
         {

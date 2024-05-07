@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseRange: 40
   baseAttackRate: 1.5
-  baseProjectileDamage: 300
+  baseProjectileDamage: 80
   baseProjectileSpeed: 30
   baseBulletCleave: 0
   projectilePrefab: {fileID: 4751542239965940919, guid: 583e3654a4283264ebb1ebca2bb51879, type: 3}

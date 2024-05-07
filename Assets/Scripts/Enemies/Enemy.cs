@@ -17,6 +17,7 @@ public abstract class EnemyTargeting : MonoBehaviour
         print("health reduced");
         if(health <= 0) //Die
         {
+            if (this is PlayerController || this is DefendPoint) return;
             Destroy(gameObject);
         } 
     }

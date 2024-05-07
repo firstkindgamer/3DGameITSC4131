@@ -46,7 +46,7 @@ public class Projectile : MonoBehaviour
 
             transform.position = Vector3.MoveTowards(transform.position, target.GetComponent<Enemy>().target.transform.position, moveSpeed * Time.deltaTime);
             transform.LookAt(target.transform);
-            if(Vector3.Distance(transform.position, target.transform.position) < 5f)
+            if(Vector3.Distance(transform.position, target.GetComponent<Enemy>().target.transform.position) < 1f)
             {
                 TakeDamage(target, damage);
                 if(hitSpawnPrefab != null)
@@ -62,7 +62,7 @@ public class Projectile : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
             transform.LookAt(target.transform);
-            if(Vector3.Distance(transform.position, target.transform.position) < 5f) //This isnt running
+            if(Vector3.Distance(transform.position, target.transform.position) < 1f) //This isnt running
             {
                 TakeDamage(target, damage);
                 cleaveTargets.Remove(target);
