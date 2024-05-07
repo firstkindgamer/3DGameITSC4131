@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseRange: 40
   baseAttackRate: 1.5
-  baseProjectileDamage: 50
+  baseProjectileDamage: 300
   baseProjectileSpeed: 30
   baseBulletCleave: 0
   projectilePrefab: {fileID: 4751542239965940919, guid: 583e3654a4283264ebb1ebca2bb51879, type: 3}
   angleOffset: 100
   price: 250
   rotateTowardsTarget: 1
+  maxHealth: 0
   range: 40
   attackRate: 1.5
-  projectileDamage: 50
+  projectileDamage: 300
   projectileSpeed: 30
   bulletCleave: 0
+  health: 0
