@@ -8,3 +8,4 @@ Spacebar - Jump and double jump.
 1-4 - Switch towers.
 Left Shift - Hold left shift to change mouse mode from camera mode to tower mode. While in tower mode, click anywhere on the ground to place a tower. Click an existing tower to open a menu where you can upgrade, salvage, toggle, or change ground/air.
 Left Ctrl - Hold to run.
+F - Open skill tree to upgrade your skills.
