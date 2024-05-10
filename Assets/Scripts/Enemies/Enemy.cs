@@ -133,6 +133,10 @@ public class Enemy : MonoBehaviour
         animator.SetBool("isRanged", isRanged);
         animator.SetFloat("attackSpeed", enemyBehaviors.attackRate / (isRanged ? 2.3f : 1.5f)); //these are the lengths of the attack clips to get them to be 1/sec
 
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        foreach (Renderer ren in renderers)
+            ren.material = enemyBehaviors.material;
+
         if (!isFlying)
             visibleObject.transform.localPosition = new Vector3(0, 0, 0); //this has to be here or it will go off its rails
 
