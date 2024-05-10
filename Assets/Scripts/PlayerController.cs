@@ -89,7 +89,7 @@ public class PlayerController : EnemyTargeting
 
         animator.SetFloat("VSpeed", direction.y);
 
-        float runMultiplier = (Input.GetKey("right shift")) ? 2f : 1f;
+        float runMultiplier = (Input.GetKey(KeyCode.LeftControl)) ? 2f : 1f;
 
         Vector3 walkDirection = new Vector3();
         //walkDirection.x = hInput * speed;
