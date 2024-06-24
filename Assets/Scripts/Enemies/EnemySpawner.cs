@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject enemyPrefab;
 
+    private bool started = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +18,10 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
+        if(Input.GetKeyDown(KeyCode.Z) && !started)
         {
             Debug.Log("The Swarm is Coming");
+            started = true;
             StartCoroutine(spawnFlying());
         }
     }
